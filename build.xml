@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="build">
+
+	<target name="build" depends="clean,bundle-install,syntax,lint">
+		<antcall target="spec" />
+		<antcall target="acceptance" />
+	</target>
+
+	<target name="clean">
+		<delete includeemptydirs="true" removeNotFollowedSymlinks="true" failonerror="false">
+			<fileset followSymlinks="no" dir="${basedir}/spec/fixtures/modules" defaultexcludes="no">
+				<include name="**/*" />
+				<exclude name="**/*~" />
+				<exclude name="**/#*#" />
+				<exclude name="**/.#*" />
+				<exclude name="**/%*%" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="rvm" description="Prepare RVM">
+		<exec executable="${user.home}/.rvm/scripts/rvm" />
+		<exec executable="rvm">
+			<arg line="use 'ruby@gemset'" />
+		</exec>
+	</target>
+
+	<target name="bundle-install" depends="rvm" description="Install dependencies using Bundler">
+		<exec executable="bundle" failonerror="true">
+			<arg value="install" />
+		</exec>
+	</target>
+
+	<target name="syntax" description="Check syntax of manifest files">
+		<exec executable="bundle" failonerror="true">
+			<arg line="exec rake syntax" />
+		</exec>
+	</target>
+
+	<target name="lint" description="Check lint of manifest and template files">
+		<exec executable="bundle" failonerror="true">
+			<arg line="exec rake lint" />
+		</exec>
+		<exec executable="${basedir}/spec/erb-lint.sh" failonerror="true" />
+	</target>
+
+	<target name="spec" description="Run spec tests">
+		<exec executable="bundle" failonerror="true">
+			<env key="CI_REPORTS" value="${basedir}/results/spec" />
+			<arg line="exec rake ci:setup:rspec spec" />
+		</exec>
+	</target>
+
+	<target name="acceptance" description="Run acceptance tests in parallel">
+		<script language="javascript">
+			<![CDATA[ 
+		    fs = project.createDataType("fileset");
+		    dir = "spec/acceptance/nodesets";
+		    fs.setDir( new java.io.File( dir ) );
+		    fs.setIncludes( "**/*.yml" );
+	
+		    // create parallel Task via Ant API
+		    parent = project.createTask("parallel");
+		    
+		    // iterate over files found.
+		    srcFiles = fs.getDirectoryScanner( project ).getIncludedFiles( );
+		    for ( i = 0; i < srcFiles.length; i++ ) {
+		        var filename = srcFiles[i];
+		        var nodename = filename.replace( '.yml', '');
+			    if (nodename == 'default') {
+					continue;
+				}
+		
+			    // Set param for antcall
+		        ac = project.createTask("antcall");
+				ac.setTarget("acceptance-build");
+				acparam=ac.createParam();
+				acparam.setName("nodeset");
+				acparam.setValue(nodename);
+				
+				parent.addTask(ac);
+			}
+			parent.perform();]]>
+		</script>
+	</target>
+
+	<target name="acceptance-build">
+		<echo message="Starting nodeset: ${nodeset}" />
+		<property environment="env" />
+		<exec executable="bundle" failonerror="true">
+			<env key="CI_REPORTS" value="${basedir}/results/acceptance" />
+			<env key="BEAKER_set" value="${nodeset}" />
+			<env key="BEAKER_debug" value="true" />
+			<arg line="exec rake ci:setup:rspec acceptance" />
+		</exec>
+	</target>
+
+</project>
