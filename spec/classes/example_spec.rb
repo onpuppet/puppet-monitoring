@@ -5,19 +5,15 @@ describe 'lysaker_monitored' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
         let(:facts) do
-          facts
+          facts.merge(
+          { :collectd_version => '5.0' }
+          )
         end
 
         context "lysaker_monitored class without any parameters" do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('lysaker_monitored::params') }
-          it { is_expected.to contain_class('lysaker_monitored::install').that_comes_before('lysaker_monitored::config') }
-          it { is_expected.to contain_class('lysaker_monitored::config') }
-          it { is_expected.to contain_class('lysaker_monitored::service').that_subscribes_to('lysaker_monitored::config') }
-
-          it { is_expected.to contain_service('lysaker_monitored') }
-          it { is_expected.to contain_package('lysaker_monitored').with_ensure('present') }
         end
       end
     end

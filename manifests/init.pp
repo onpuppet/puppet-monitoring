@@ -11,14 +11,34 @@
 #   e.g. "Specify one or more upstream ntp servers as an array."
 #
 class lysaker_monitored (
-  $package_name = $::lysaker_monitored::params::package_name,
-  $service_name = $::lysaker_monitored::params::service_name,
+  $influxdb_hostname = $::lysaker_monitored::params::influxdb_hostname,
+  $influxdb_port = $::lysaker_monitored::params::influxdb_port,
 ) inherits ::lysaker_monitored::params {
 
   # validate parameters here
 
-  class { '::lysaker_monitored::install': } ->
-  class { '::lysaker_monitored::config': } ~>
-  class { '::lysaker_monitored::service': } ->
-  Class['::lysaker_monitored']
+  class { '::collectd':
+    purge           => true,
+    recurse         => true,
+    purge_config    => true,
+    minimum_version => '5.4',
+  }
+
+  collectd::plugin::network::server { $lysaker_monitored::influxdb_hostname: port => $lysaker_monitored::influxdb_port, }
+
+  class { '::collectd::plugin::conntrack': }
+
+  class { '::collectd::plugin::cpu':
+    reportbystate    => true,
+    reportbycpu      => true,
+    valuespercentage => true,
+  }
+
+  class { '::collectd::plugin::memory':
+  }
+
+  class { '::collectd::plugin::interface':
+    interfaces     => ['eth0', 'lo'],
+    ignoreselected => true,
+  }
 }

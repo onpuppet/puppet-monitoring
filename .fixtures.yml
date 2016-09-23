@@ -1,5 +1,7 @@
 fixtures:
   repositories:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+    concat: "https://github.com/puppetlabs/puppetlabs-concat.git"
+    collectd: "https://github.com/voxpupuli/puppet-collectd.git"
   symlinks:
     lysaker_monitored: "#{source_dir}"

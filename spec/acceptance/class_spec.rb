@@ -13,13 +13,5 @@ describe 'lysaker_monitored class' do
       apply_manifest(pp, :catch_changes  => true)
     end
 
-    describe package('lysaker_monitored') do
-      it { is_expected.to be_installed }
-    end
-
-    describe service('lysaker_monitored') do
-      it { is_expected.to be_enabled }
-      it { is_expected.to be_running }
-    end
   end
 end

@@ -4,6 +4,10 @@
 # It sets variables according to platform.
 #
 class lysaker_monitored::params {
+
+  $influxdb_hostname = 'lys-stats.cisco.com'
+  $influxdb_port = 25826
+
   case $::osfamily {
     'Debian': {
       $package_name = 'lysaker_monitored'
