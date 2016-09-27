@@ -46,12 +46,6 @@ class lysaker_monitored (
     ignoreselected => true,
   }
 
-  class { '::collectd::plugin::disk':
-    disks          => ['/^dm/'],
-    ignoreselected => true,
-    udevnameattr   => 'DM_NAME',
-  }
-
   class { '::collectd::plugin::ethstat':
     interfaces => ['eth0', 'eth1', 'eno160'],
     maps       => ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'],
