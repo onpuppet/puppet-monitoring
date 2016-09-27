@@ -65,7 +65,7 @@ class lysaker_monitored (
 
   class { '::collectd::plugin::interface':
     interfaces     => ['lo'],
-    ignoreselected => true
+    ignoreselected => true,
   }
 
   class { '::collectd::plugin::load':
@@ -84,10 +84,6 @@ class lysaker_monitored (
     port           => 123,
     reverselookups => false,
     includeunitid  => false,
-  }
-
-  class { '::collectd::plugin::ping':
-    hosts => ['vg.no'],
   }
 
   class { '::collectd::plugin::uptime':
