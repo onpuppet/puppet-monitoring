@@ -17,6 +17,9 @@ class lysaker_monitored (
 
   # validate parameters here
 
+
+  #class { '::collectd::plugin::memory': }
+
   class { '::collectd':
     purge           => true,
     recurse         => true,
@@ -28,14 +31,14 @@ class lysaker_monitored (
 
   class { '::collectd::plugin::conntrack': }
 
-  class { '::collectd::plugin::cpu':
-    reportbystate    => true,
-    reportbycpu      => true,
-    valuespercentage => true,
-  }
+#  class { '::collectd::plugin::cpu':
+#    reportbystate    => true,
+#    reportbycpu      => true,
+#    valuespercentage => true,
+#  }
 
-  class { '::collectd::plugin::memory':
-  }
+  #class { '::collectd::plugin::memory':
+  #}
 
   class { '::collectd::plugin::interface':
     interfaces     => ['eth0', 'lo'],
