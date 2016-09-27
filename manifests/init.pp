@@ -63,6 +63,11 @@ class lysaker_monitored (
     valuespercentage => false,
   }
 
+	class { 'collectd::plugin::interface':
+	  interfaces     => ['lo'],
+	  ignoreselected => true
+	}
+
   class { '::collectd::plugin::load':
   }
 
@@ -72,15 +77,6 @@ class lysaker_monitored (
   }
 
   class { '::collectd::plugin::memory':
-  }
-
-  class { '::collectd::plugin::netlink':
-    interfaces        => ['All'],
-    verboseinterfaces => ['ppp0'],
-    qdiscs            => ['"eth0" "pfifo_fast-1:0"', '"ppp0"'],
-    classes           => ['"ppp0" "htb-1:10"'],
-    filters           => ['"ppp0" "u32-1:0"'],
-    ignoreselected    => false,
   }
 
   class { '::collectd::plugin::ntpd':
