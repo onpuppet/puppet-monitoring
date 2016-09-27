@@ -17,9 +17,6 @@ class lysaker_monitored (
 
   # validate parameters here
 
-
-  #class { '::collectd::plugin::memory': }
-
   class { '::collectd':
     purge           => true,
     recurse         => true,
