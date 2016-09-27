@@ -63,10 +63,10 @@ class lysaker_monitored (
     valuespercentage => false,
   }
 
-	class { 'collectd::plugin::interface':
-	  interfaces     => ['lo'],
-	  ignoreselected => true
-	}
+  class { '::collectd::plugin::interface':
+    interfaces     => ['lo'],
+    ignoreselected => true
+  }
 
   class { '::collectd::plugin::load':
   }
