@@ -73,13 +73,6 @@ class lysaker_monitored (
   class { '::collectd::plugin::memory':
   }
 
-  class { '::collectd::plugin::ntpd':
-    host           => 'localhost',
-    port           => 123,
-    reverselookups => false,
-    includeunitid  => false,
-  }
-
   class { '::collectd::plugin::uptime':
   }
 
