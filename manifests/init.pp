@@ -40,9 +40,6 @@ class lysaker_monitored (
     ignoreselected => true,
   }
 
-  $interfaces = split($::interfaces, ',')
-  $filtered_interfaces = $interfaces.filter |$items| { $items =~ /^(?:eth)|(?:eno)|(?:br)/ }
-
   class { '::collectd::plugin::fhcount':
     valuesabsolute   => true,
     valuespercentage => false,
