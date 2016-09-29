@@ -38,9 +38,6 @@ class lysaker_monitored (
     valuespercentage => true,
   }
 
-  class { '::collectd::plugin::cpufreq':
-  }
-
   class { '::collectd::plugin::df':
     fstypes        => ['nfs', 'tmpfs', 'autofs', 'gpfs', 'proc', 'devpts'],
     ignoreselected => true,
