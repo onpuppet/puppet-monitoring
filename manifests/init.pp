@@ -48,7 +48,7 @@ class lysaker_monitored (
 
   class { '::collectd::plugin::ethstat':
     interfaces => ['eth0', 'eth1', 'eno160'],
-    maps       => ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'],
+    maps       => ['"rx_csum_offload_errors" "if_rx_errors" "checksum_offload"', '"multicast" "if_multicast"'],
     mappedonly => false,
   }
 
