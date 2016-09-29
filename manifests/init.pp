@@ -59,8 +59,4 @@ class lysaker_monitored (
   class { '::collectd::plugin::uptime':
   }
 
-  class { '::collectd::plugin::vmem':
-    verbose => true,
-  }
-
 }
