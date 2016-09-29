@@ -29,9 +29,6 @@ class lysaker_monitored (
     cgroups         => ['array', 'of', 'paths'],
   }
 
-  class { '::collectd::plugin::conntrack':
-  }
-
   class { '::collectd::plugin::cpu':
     reportbystate    => true,
     reportbycpu      => true,
