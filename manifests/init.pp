@@ -46,8 +46,11 @@ class lysaker_monitored (
     ignoreselected => true,
   }
 
+  $interfaces = split($::interfaces, ',')
+  $filtered_interfaces = $interfaces.filter |$items| { $items =~ /^(?:docker)|(?:lo)/ }
+
   class { '::collectd::plugin::ethstat':
-    interfaces => ['eth0', 'eth1', 'eno160'],
+    interfaces => $filtered_interfaces,
     maps       => ['"rx_csum_offload_errors" "if_rx_errors" "checksum_offload"', '"multicast" "if_multicast"'],
     mappedonly => false,
   }
