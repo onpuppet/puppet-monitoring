@@ -43,12 +43,6 @@ class lysaker_monitored (
   $interfaces = split($::interfaces, ',')
   $filtered_interfaces = $interfaces.filter |$items| { $items =~ /^(?:eth)|(?:eno)|(?:br)/ }
 
-  class { '::collectd::plugin::ethstat':
-    interfaces => $filtered_interfaces,
-    maps       => ['"rx_csum_offload_errors" "if_rx_errors" "checksum_offload"', '"multicast" "if_multicast"'],
-    mappedonly => false,
-  }
-
   class { '::collectd::plugin::fhcount':
     valuesabsolute   => true,
     valuespercentage => false,
