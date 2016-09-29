@@ -47,7 +47,7 @@ class lysaker_monitored (
   }
 
   $interfaces = split($::interfaces, ',')
-  $filtered_interfaces = $interfaces.filter |$items| { $items =~ /^(?:docker)|(?:lo)/ }
+  $filtered_interfaces = $interfaces.filter |$items| { $items =~ /^(?:eth)|(?:eno)|(?:br)/ }
 
   class { '::collectd::plugin::ethstat':
     interfaces => $filtered_interfaces,
