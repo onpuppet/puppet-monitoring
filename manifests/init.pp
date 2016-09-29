@@ -24,11 +24,6 @@ class lysaker_monitored (
 
   collectd::plugin::network::server { $lysaker_monitored::influxdb_hostname: port => $lysaker_monitored::influxdb_port, }
 
-  class { '::collectd::plugin::cgroups':
-    ignore_selected => true,
-    cgroups         => ['array', 'of', 'paths'],
-  }
-
   class { '::collectd::plugin::cpu':
     reportbystate    => true,
     reportbycpu      => true,
