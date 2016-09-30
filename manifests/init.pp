@@ -30,6 +30,11 @@ class lysaker_monitored (
     valuespercentage => true,
   }
 
+	class { '::collectd::plugin::disk':
+	  disks          => ['/^dm/'],
+	  ignoreselected => true,
+	}
+
   class { '::collectd::plugin::df':
     fstypes        => ['nfs', 'tmpfs', 'autofs', 'gpfs', 'proc', 'devpts'],
     ignoreselected => true,
