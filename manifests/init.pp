@@ -33,6 +33,7 @@ class lysaker_monitored (
   class { '::collectd::plugin::disk':
     disks          => ['/^dm/'],
     ignoreselected => true,
+    manage_package => false,
   }
 
   class { '::collectd::plugin::df':
