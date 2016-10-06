@@ -55,8 +55,8 @@ class lysaker_monitored (
   }
 
   class { '::collectd::plugin::logfile':
-    log_level => 'warning',
-    log_file  => '/var/log/collected.log',
+    log_level => 'info',
+    log_file  => '/var/log/collectd.log',
   }
 
   class { '::collectd::plugin::memory':
