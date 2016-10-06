@@ -65,4 +65,8 @@ class lysaker_monitored (
   class { '::collectd::plugin::uptime':
   }
 
+  if defined(Class['apache']) {
+    include ::lysaker_monitored::apache
+  }
+
 }
