@@ -6,7 +6,10 @@ describe 'lysaker_monitored' do
       context "on #{os}" do
         let(:facts) do
           facts.merge(
-          { :collectd_version => '5.0' }
+          {
+            :collectd_version => '5.0',
+            :redis_present => false,
+          }
           )
         end
 
