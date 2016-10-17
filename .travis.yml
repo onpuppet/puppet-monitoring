@@ -4,7 +4,7 @@ cache: bundler
 bundler_args: "--without development system_tests"
 before_install: rm Gemfile.lock || true
 script:
-  - 'bundle exec rake $CHECK'
+- bundle exec rake $CHECK
 matrix:
   fast_finish: true
   include:
@@ -15,7 +15,7 @@ matrix:
   - rvm: 2.2.5
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.3.1
-    env: PUPPET_VERSION="~> 4.0" CHECK=test
+    env: PUPPET_VERSION="~> 4.0" CHECK=test DEPLOY_TO_FORGE="yes"
   - rvm: 2.3.1
     env: PUPPET_VERSION="~> 4.0" CHECK=rubocop
 notifications:
@@ -24,8 +24,8 @@ deploy:
   provider: puppetforge
   user: yuav
   password:
-    secure: "eoL7w/nJQztCj0iFlHrWu+w5555BuLBZskkBn4cmtjcvG0nbrxNGUmNXzsKF0Y1PwQMmK0yBUmT3upvP0+6nrsxkuA780D4llafNHSBQkq1+fTHUtr2iEhDhmrLQKLN5Cd5MtXmpEo1NiizJjSOI0Pvj2eZUaTwFxJ+VNj/L9C4chtQY9UcEMzVCa9yS2P/ELCu66Jh5uLbJunh2Czyz64r+4MW/EsXjnerGtxubv83frRTmqBLPgRb/NbtXVdL1jzPno2FcJ84Jge7ToEHGBfPVWJ/CYge/bSupItO5dK81KgTBkqQbYARDV2EESN4/9Aw92sOd9DtGCpIXc7no2Et94VrER13cUBNdEfGn9pi6gMthr54BCse+LZ02LV2JYc3Ihk2+ZbfKSR1YXV3XZRn/9ejVCcSh3lmDH0L+r/Ne6s1ppBEy4cNcZkbQZX8EBnyZ1Zqv7+cBzqspPZB+5WUvraODgU8RITxTliTHgG52x13Seh6lpb3XMGjaFnudTOXEnxiQtWYymJdXrRHZLocxbWKvp5TH2kqnWZ5Z86OjFAPBy/Bbmb9L5CJT6e9ht9EIaBUQaY5nq20XrJt2fKBnrGL64/C1bv+MA6HUG8gP+hx1z+DzOQCUZHmLe60t4ZJeNiOSQi1s7tMiG4fOA76askAoS224BVB2LMq+wM8="
+    secure: Ofc1KDGglVDmqWmRITBLYOQ9vUo1/zP4zSgbl8jvv+JD7IxNCQbvUYEnPTPxFnaS8e7KRPesWH+1wCthaAtDC9WDRg9c+1Iq+O0jpd6l3b4NrFjTA8vgMV5fC4hpDhyCiT3PM6D2HauzPW733bM/m5t0s+BIpt4PJKMG8/GzGoTj2CzmF9eKxruGVpBULDJjI7jIk73/KBkgXkpi9sn8Vu1/s0dNOBKvuUci/Tg0iASLxCeQiErFZ8xK0VmQxKfbdsru1vUsWulhPnSDjAuZmOzXOa3muKDdKmGw0OH8uIG7P7i0mJrHAk13ydL2mVpvauD9LBlomcFsON5Q2fpC/RLW5z2cTyvmLVClw5yL7kmYCWdOPTBMxhw8PBWxTlHipZ3KUmTR5SYsLq4OzqcWVNYrs0BC7R5KIsAGNSoLTXunxKnPteLC2OPUp3gi1T6xnDohA6GdhqW8wHzMVjjALrv8uaDBTe/ZzuKhBvD5Q3T4qf5gNbt7izRIIDOsucEe87jwbgE6EM4P05WTBgD9+jRIOJaHNpoDBL7oxUGZ/bQe3n/koWCCmt5VAKxbykTs2K3APcda7uI5dzdScZKZnLudoGzIMFV9IGPV1A4NqIIVCP+M/nvryk9sgaRbqxy5wgEJ/iHHLMSGzdbELIFz30uki7UwkLiZ+W1EF0TIrpM=
   on:
     tags: true
     all_branches: true
-    rvm: 2.1.9
+    condition: "$DEPLOY_TO_FORGE = yes"
