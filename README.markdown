@@ -21,16 +21,16 @@ Install the module using:
 and use the facts it provides
 
     if ($::apache_present) {
-      // Install Apache monitoring
+      # Install Apache monitoring
     }
 
 *Note: Puppet facts are resolved at runtime, so if apache is installed in the same Puppet run,
 add an additional check to ensure idempotency. E.G:
 
     if (defined(Package['apache2']) and $::apache_present) {
-      // Install Apache monitoring
+      # Install Apache monitoring
     }
 
 ## Supported facts
 
-    $::apache_present // Returns true is apache present, false otherwise
+    $::apache_present # Returns true is apache present, false otherwise
