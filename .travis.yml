@@ -15,11 +15,9 @@ matrix:
   - rvm: 2.2.5
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.3.1
-    env: PUPPET_VERSION="~> 4.0" CHECK=build DEPLOY_TO_FORGE=yes
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.3.1
     env: PUPPET_VERSION="~> 4.0" CHECK=rubocop
-  - rvm: 2.3.1
-    env: PUPPET_VERSION="~> 4.0" CHECK=test
 notifications:
   email: true
 deploy:
