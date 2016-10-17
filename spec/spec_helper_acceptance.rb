@@ -18,6 +18,7 @@ RSpec.configure do |c|
       on host, puppet('module', 'install', 'puppetlabs-stdlib'), { :acceptable_exit_codes => [0] }
       on host, puppet('module', 'install', 'puppetlabs-concat'), { :acceptable_exit_codes => [0] }
       on host, puppet('module', 'install', 'puppet-yum'), { :acceptable_exit_codes => [0] }
+      on host, puppet('module', 'install', 'yuav-monitoring_facts'), { :acceptable_exit_codes => [0] }
       install_package host, 'git'
       modulepath = host.puppet['modulepath']
       modulepath = modulepath.split(':').first if modulepath
