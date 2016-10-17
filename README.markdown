@@ -27,7 +27,7 @@ and use the facts it provides
 *Note: Puppet facts are resolved at runtime, so if apache is installed in the same Puppet run,
 add an additional check to ensure idempotency. E.G:
 
-    if (defined(Package['apache2']) and $::apache_present) {
+    if (defined(Package['apache2']) or $::apache_present) {
       # Install Apache monitoring
     }
 
