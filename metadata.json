@@ -1,0 +1,12 @@
+{
+  "name": "yuav-monitoring_facts",
+  "version": "0.1.0",
+  "author": "yuav",
+  "summary": "Facts collection for decoupling monitoring from install",
+  "license": "Apache-2.0",
+  "source": "git@github.com:Yuav/puppet-monitoring_facts.git",
+  "project_page": "https://github.com/Yuav/puppet-monitoring_facts",
+  "issues_url": "https://github.com/Yuav/puppet-monitoring_facts",
+  "dependencies": []
+}
+
