@@ -33,5 +33,7 @@ add an additional check to ensure idempotency. E.G:
 
 ## Supported facts
 
-    $::apache_present # Returns true if apache is present, false otherwise
-    $::redis_present # Returns true if redis-server is present, false otherwise
+### Boolean facts
+
+    $::apache_present
+    $::redis_present

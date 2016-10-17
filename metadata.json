@@ -1,6 +1,6 @@
 {
   "name": "yuav-monitoring_facts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "yuav",
   "summary": "Facts collection for decoupling monitoring from install",
   "license": "Apache-2.0",
