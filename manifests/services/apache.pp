@@ -1,5 +1,5 @@
 #
-class lysaker_monitored::apache {
+class lysaker_monitored::services::apache {
   class { '::apache::mod::status':
     allow_from      => ['127.0.0.1', '::1'],
     extended_status => 'On',

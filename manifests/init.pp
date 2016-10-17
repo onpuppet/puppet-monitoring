@@ -41,6 +41,7 @@ class lysaker_monitored (
     ignoreselected => true,
   }
 
+  # Not available until collectd 5.5 (Ubuntu 14.04 has 5.4)
   class { '::collectd::plugin::fhcount':
     valuesabsolute   => true,
     valuespercentage => false,
@@ -66,7 +67,11 @@ class lysaker_monitored (
   }
 
   if defined(Class['apache']) {
-    include ::lysaker_monitored::apache
+    include ::lysaker_monitored::services::apache
+  }
+
+  if ($::redis_present) {
+    include ::lysaker_monitored::services::redis
   }
 
 }
