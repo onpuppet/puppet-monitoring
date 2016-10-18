@@ -27,18 +27,11 @@ Facter.add(:apache_present) do
 end
 
 Facter.add(:apache_statuspage_present) do
-  STDOUT.write 'foo'
-#  # TODO: use a full apache conf parser like https://github.com/bmatzelle/apache_config 
-#  # and look for "SetHandler server-status"
-
-  uri = 'http://localhost/server-status'
-  STDOUT.write uri 
-    
-  response = fetch(uri)
-  
-  STDOUT.write response.body
-  
-  !!(response.body =~ /Apache Status/i)
-  
+  setcode do
+    # TODO: use a full apache conf parser like https://github.com/bmatzelle/apache_config
+    # and look for "SetHandler server-status"
+    uri = 'http://localhost/server-status'
+    response = fetch(uri)
+    !!(response.body =~ /<title>Apache Status<\/title>/i)
+  end
 end
-
