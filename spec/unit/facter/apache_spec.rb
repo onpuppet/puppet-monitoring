@@ -32,4 +32,18 @@ describe Facter::Util::Fact do
       end
     end
   end
+  
+  describe "apache server-status page present" do
+    it do
+      
+      
+#      original_get_response = Net::HTTP.method(:get_response)
+#      Net::HTTP.stub(:get_response) do |uri|
+#        (uri.to_s == 'http://google.de') ? FakeResponse.new : original_get_response.call(uri)
+#      end
+      
+      #Net::HTTP.get_response(URI.parse(uri))
+      expect(Facter.value(:apache_statuspage_present)).to eq(true)
+    end
+  end
 end
