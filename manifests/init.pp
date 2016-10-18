@@ -66,9 +66,9 @@ class lysaker_monitored (
   class { '::collectd::plugin::uptime':
   }
 
-  if defined(Class['apache']) {
-    include ::lysaker_monitored::services::apache
-  }
+
+  include ::lysaker_monitored::services::apache
+
 
   if ($::redis_present) {
     include ::lysaker_monitored::services::redis
