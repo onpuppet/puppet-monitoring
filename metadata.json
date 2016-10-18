@@ -2,9 +2,9 @@
   "name": "puppet-lysaker_monitored",
   "version": "0.1.0",
   "author": "puppet",
-  "summary": "",
+  "summary": "Monitoring checks for Lysaker",
   "license": "Apache 2.0",
-  "source": "",
+  "source": "https://gitscm.cisco.com/projects/CTG/repos/puppet-lysaker_monitored/browse",
   "project_page": "",
   "issues_url": "",
   "dependencies": [
