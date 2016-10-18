@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 
 def fetch(uri_str, limit = 10)
-  raise ArgumentError, 'HTTP redirect too deep' if limit == 0
+  raise ArgumentError, 'HTTP redirect too deep' if limit.zero?
 
   url = URI.parse(uri_str)
   req = Net::HTTP::Get.new(url.path)

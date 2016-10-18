@@ -40,8 +40,8 @@ describe Facter::Util::Fact do
     context 'with status page present' do
       it do
         stub_request(:get, "http://localhost/server-status").
-        with(:headers => {'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => "<title>Apache Status</title>\nfoo", :headers => {})
+          with(:headers => {'User-Agent'=>'Ruby'}).
+          to_return(:status => 200, :body => "<title>Apache Status</title>\nfoo", :headers => {})
 
         expect(Facter.value(:apache_statuspage_present)).to eq(true)
       end
@@ -50,8 +50,8 @@ describe Facter::Util::Fact do
     context 'with status page absent' do
       it do
         stub_request(:get, "http://localhost/server-status").
-        with(:headers => {'User-Agent'=>'Ruby'}).
-        to_return(:status => 202, :body => "<title>Not Found</title>", :headers => {})
+          with(:headers => {'User-Agent'=>'Ruby'}).
+          to_return(:status => 202, :body => "<title>Not Found</title>", :headers => {})
 
         expect(Facter.value(:apache_statuspage_present)).to eq(false)
       end
@@ -59,9 +59,9 @@ describe Facter::Util::Fact do
     
     context 'no listening webserver' do
       it do
-        stubbed_request = stub_request(:get, "http://localhost/server-status").
-        with(:headers => {'User-Agent'=>'Ruby'}).
-        to_timeout
+        stub_request(:get, "http://localhost/server-status").
+          with(:headers => {'User-Agent'=>'Ruby'}).
+          to_timeout
         
         expect(Facter.value(:apache_statuspage_present)).to eq(nil) # Failure
       end
