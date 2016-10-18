@@ -36,4 +36,5 @@ add an additional check to ensure idempotency. E.G:
 ### Boolean facts
 
     $::apache_present
+    $::apache_statuspage_present
     $::redis_present
