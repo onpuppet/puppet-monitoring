@@ -4,6 +4,6 @@ Facter.add("apache_present") do
     if not present
       present = Facter::Util::Resolution.which('apache2ctl')
     end
-    present
+    !!present
   end
 end
