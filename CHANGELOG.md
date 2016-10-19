@@ -1,3 +1,7 @@
+## 2016-10-29 Release 0.2.5
+
+* Feature: Rabbitmq present
+
 ## 2016-10-18 Release 0.2.4
 
 * Feature: Apache status page fact added
