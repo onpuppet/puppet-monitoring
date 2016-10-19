@@ -9,6 +9,7 @@ describe 'lysaker_monitored' do
           {
             :collectd_version => '5.0',
             :redis_present => false,
+            :rabbitmq_present => false,
           }
           )
         end
