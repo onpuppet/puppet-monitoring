@@ -1,4 +1,8 @@
-## 2016-10-29 Release 0.2.5
+## 2016-10-20 Release 0.2.6
+
+* Fix: Catch Net:HTTP exceptions in apache fact
+
+## 2016-10-19 Release 0.2.5
 
 * Feature: Rabbitmq present
 
