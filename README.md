@@ -33,8 +33,18 @@ add an additional check to ensure idempotency. E.G:
 
 ## Supported facts
 
-### Boolean facts
+### Apache facts
+
+Checks if Apache is installed on the system
 
     $::apache_present
+
+Checks if apache status page with metrics is available from localhost
+
     $::apache_statuspage_present
+
+### Redis facts
+
+Checks if Redis is installed on the system
+
     $::redis_present
