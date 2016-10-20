@@ -18,6 +18,20 @@ matrix:
     env: PUPPET_VERSION="~> 4.0" CHECK=test DEPLOY_TO_FORGE="yes"
   - rvm: 2.3.1
     env: PUPPET_VERSION="~> 4.0" CHECK=rubocop
+  - rvm: 2.3.1
+    sudo: required
+    dist: trusty
+    services: docker
+    env: BEAKER_set="docker/ubuntu-14.04"
+    bundler_args:
+    script: sudo service docker restart ; sleep 10 && bundle exec rspec spec/acceptance/*_spec.rb
+  - rvm: 2.3.1
+    sudo: required
+    dist: trusty
+    services: docker
+    env: BEAKER_set="docker/ubuntu-16.04"
+    bundler_args:
+    script: sudo service docker restart ; sleep 10 && bundle exec rspec spec/acceptance/*_spec.rb
 notifications:
   email: true
 deploy:

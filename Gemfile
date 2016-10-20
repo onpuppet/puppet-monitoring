@@ -31,7 +31,7 @@ group :development do
 end
 
 group :system_tests do
-  gem "beaker"
+  gem "beaker", '~> 2'
   gem "beaker-rspec"
   gem "beaker-puppet_install_helper"
 end

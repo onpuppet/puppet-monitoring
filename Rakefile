@@ -7,7 +7,6 @@ require 'puppet/vendor/semantic/lib/semantic' unless Puppet.version.to_f < 3.6
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
 require 'metadata-json-lint/rake_task'
-require 'rubocop/rake_task'
 require 'ci/reporter/rake/rspec'
 
 # These gems aren't always present, for instance
@@ -16,8 +15,6 @@ begin
   require 'puppet_blacksmith/rake_tasks'
 rescue LoadError # rubocop:disable Lint/HandleExceptions
 end
-
-RuboCop::RakeTask.new
 
 exclude_paths = [
   "bundle/**/*",
@@ -43,6 +40,11 @@ PuppetSyntax.exclude_paths = exclude_paths
 desc "Populate CONTRIBUTORS file"
 task :contributors do
   system("git log --format='%aN' | sort -u > CONTRIBUTORS")
+end
+
+desc 'Run acceptance tests'
+RSpec::Core::RakeTask.new(:acceptance) do |t|
+  t.pattern = 'spec/acceptance'
 end
 
 desc "Run syntax, lint, and spec tests."

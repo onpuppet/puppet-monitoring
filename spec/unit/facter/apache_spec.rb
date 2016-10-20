@@ -39,6 +39,9 @@ describe Facter::Util::Fact do
   end
 
   describe "apache server-status page present" do
+    before do
+      Facter.fact(:apache_present).stubs(:value).returns true
+    end
     context 'with status page present' do
       it do
         stub_request(:get, "http://localhost/server-status").
@@ -55,7 +58,7 @@ describe Facter::Util::Fact do
           with(:headers => {'User-Agent'=>'Ruby'}).
           to_return(:status => 202, :body => "<title>Not Found</title>", :headers => {})
 
-        expect(Facter.value(:apache_statuspage_present)).to be_falsey
+        expect(Facter.value(:apache_statuspage_present)).to be false
       end
     end
 
@@ -65,7 +68,7 @@ describe Facter::Util::Fact do
           with(:headers => {'User-Agent'=>'Ruby'}).
           to_timeout
 
-        expect(Facter.value(:apache_statuspage_present)).to be_falsey
+        expect(Facter.value(:apache_statuspage_present)).to be false
       end
     end
 
@@ -74,7 +77,8 @@ describe Facter::Util::Fact do
         stub_request(:get, "http://localhost/server-status").
           with(:headers => {'User-Agent'=>'Ruby'}).
           to_raise(Errno::ECONNREFUSED)
-        expect(Facter.value(:apache_statuspage_present)).to be_falsey
+
+        expect(Facter.value(:apache_statuspage_present)).to be false
       end
     end
   end

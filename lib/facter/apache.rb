@@ -27,9 +27,8 @@ Facter.add(:apache_present) do
 end
 
 Facter.add(:apache_statuspage_present) do
+  confine :apache_present => true
   setcode do
-    # TODO: use a full apache conf parser like https://github.com/bmatzelle/apache_config
-    # and look for "SetHandler server-status"
     uri = 'http://localhost/server-status'
     begin
       response = fetch(uri)
@@ -40,3 +39,6 @@ Facter.add(:apache_statuspage_present) do
     !!(response.body =~ /<title>Apache Status<\/title>/i)
   end
 end
+
+# TODO: use a full apache conf parser like https://github.com/bmatzelle/apache_config
+# and look for "SetHandler server-status"
