@@ -31,7 +31,12 @@ Facter.add(:apache_statuspage_present) do
     # TODO: use a full apache conf parser like https://github.com/bmatzelle/apache_config
     # and look for "SetHandler server-status"
     uri = 'http://localhost/server-status'
-    response = fetch(uri)
+    begin
+      response = fetch(uri)
+    rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
+             Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError
+      return false
+    end
     !!(response.body =~ /<title>Apache Status<\/title>/i)
   end
 end

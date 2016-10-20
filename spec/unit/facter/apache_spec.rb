@@ -3,6 +3,8 @@ require 'webmock/rspec'
 
 include WebMock::API
 
+WebMock.disable_net_connect!(allow_localhost: true)
+
 describe Facter::Util::Fact do
   before do
     Facter.clear
@@ -13,7 +15,7 @@ describe Facter::Util::Fact do
       it do
         Facter::Util::Resolution.stubs(:exec)
         Facter::Util::Resolution.expects(:which).with("apachectl").returns(true)
-        expect(Facter.value(:apache_present)).to eq(true)
+        expect(Facter.value(:apache_present)).to be true
       end
     end
 
@@ -22,7 +24,7 @@ describe Facter::Util::Fact do
         Facter::Util::Resolution.stubs(:exec)
         Facter::Util::Resolution.expects(:which).with("apachectl").returns(false)
         Facter::Util::Resolution.expects(:which).with("apache2ctl").returns(false)
-        expect(Facter.value(:apache_present)).to eq(false)
+        expect(Facter.value(:apache_present)).to be false
       end
     end
 
@@ -31,7 +33,7 @@ describe Facter::Util::Fact do
         Facter::Util::Resolution.stubs(:exec)
         Facter::Util::Resolution.expects(:which).with("apachectl").returns(false)
         Facter::Util::Resolution.expects(:which).with("apache2ctl").returns(true)
-        expect(Facter.value(:apache_present)).to eq(true)
+        expect(Facter.value(:apache_present)).to be true
       end
     end
   end
@@ -43,7 +45,7 @@ describe Facter::Util::Fact do
           with(:headers => {'User-Agent'=>'Ruby'}).
           to_return(:status => 200, :body => "<title>Apache Status</title>\nfoo", :headers => {})
 
-        expect(Facter.value(:apache_statuspage_present)).to eq(true)
+        expect(Facter.value(:apache_statuspage_present)).to be true
       end
     end
 
@@ -53,17 +55,26 @@ describe Facter::Util::Fact do
           with(:headers => {'User-Agent'=>'Ruby'}).
           to_return(:status => 202, :body => "<title>Not Found</title>", :headers => {})
 
-        expect(Facter.value(:apache_statuspage_present)).to eq(false)
+        expect(Facter.value(:apache_statuspage_present)).to be_falsey
       end
     end
-    
-    context 'no listening webserver' do
+
+    context 'no listening webserver resulting in timeout' do
       it do
         stub_request(:get, "http://localhost/server-status").
           with(:headers => {'User-Agent'=>'Ruby'}).
           to_timeout
-        
-        expect(Facter.value(:apache_statuspage_present)).to eq(nil) # Failure
+
+        expect(Facter.value(:apache_statuspage_present)).to be_falsey
+      end
+    end
+
+    context 'no listening webserver resulting in connection refused' do
+      it do
+        stub_request(:get, "http://localhost/server-status").
+          with(:headers => {'User-Agent'=>'Ruby'}).
+          to_raise(Errno::ECONNREFUSED)
+        expect(Facter.value(:apache_statuspage_present)).to be_falsey
       end
     end
   end
