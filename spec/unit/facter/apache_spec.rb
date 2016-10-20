@@ -56,7 +56,7 @@ describe Facter::Util::Fact do
       it do
         stub_request(:get, "http://localhost/server-status").
           with(:headers => {'User-Agent'=>'Ruby'}).
-          to_return(:status => 202, :body => "<title>Not Found</title>", :headers => {})
+          to_return(:status => 404, :body => "<title>Not Found</title>", :headers => {})
 
         expect(Facter.value(:apache_statuspage_present)).to be false
       end
