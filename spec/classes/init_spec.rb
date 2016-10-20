@@ -7,6 +7,8 @@ describe 'lysaker_monitored' do
         let(:facts) do
           facts.merge(
           {
+            :apache_present => false,
+            :apache_statuspage_present => false,
             :collectd_version => '5.0',
             :redis_present => false,
             :rabbitmq_present => false,
