@@ -43,6 +43,12 @@ Checks if apache status page with metrics is available from localhost
 
     $::apache_statuspage_present
 
+### RabbitMQ facts
+
+Checks if RabbitMQ is installed on the system
+
+    $::rabbitmq_present
+
 ### Redis facts
 
 Checks if Redis is installed on the system

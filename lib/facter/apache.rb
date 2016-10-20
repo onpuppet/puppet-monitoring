@@ -32,11 +32,11 @@ Facter.add(:apache_statuspage_present) do
     uri = 'http://localhost/server-status'
     begin
       response = fetch(uri)
+      !!(response.body =~ /<title>Apache Status<\/title>/i)
     rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
-             Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError
-      return false
+             Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError, Errno::ECONNREFUSED
+      false
     end
-    !!(response.body =~ /<title>Apache Status<\/title>/i)
   end
 end
 
