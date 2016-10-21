@@ -38,6 +38,17 @@ describe Facter::Util::Fact do
     end
   end
 
+  describe "apache service running" do
+    context 'with status page present' do
+      it do
+        #Facter::Util::Resolution.stubs(:exec)
+        #Facter::Util::Resolution.expects(:which).with("apachectl").returns(false)
+        #Facter::Util::Resolution.expects(:which).with("apache2ctl").returns(true)
+        expect(Facter.value(:apache_running)).to be false
+      end
+    end
+  end
+
   describe "apache server-status page present" do
     before do
       Facter.fact(:apache_present).stubs(:value).returns true

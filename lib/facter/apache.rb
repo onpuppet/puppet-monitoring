@@ -1,3 +1,5 @@
+require 'puppet/type'
+require 'puppet/type/service'
 require 'net/http'
 require 'uri'
 
@@ -23,6 +25,12 @@ Facter.add(:apache_present) do
       present = Facter::Util::Resolution.which('apache2ctl')
     end
     !!present
+  end
+end
+
+Facter.add(:apache_running) do
+  setcode do
+    Puppet::Type.type(:service).newservice(:name => 'apache2').provider.status == :running
   end
 end
 
