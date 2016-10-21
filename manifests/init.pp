@@ -75,7 +75,7 @@ class lysaker_monitored (
   }
 
   if ($::rabbitmq_present) {
-    class { '::collectd::plugin::rabbitmq': }
+    include ::lysaker_monitored::services::rabbitmq
   }
 
 
