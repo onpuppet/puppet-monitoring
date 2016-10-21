@@ -1,3 +1,7 @@
+## 2016-10-21 Release 0.2.7
+
+* Fix: Increase visibility of apache facts
+
 ## 2016-10-20 Release 0.2.6
 
 * Fix: Catch Net:HTTP exceptions in apache fact
