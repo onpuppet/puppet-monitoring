@@ -5,15 +5,13 @@ describe 'monitoring' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
         let(:facts) do
-          facts.merge(
-          {
+          facts.merge({
             :apache_present => false,
             :apache_statuspage_present => false,
             :collectd_version => '5.0',
             :redis_present => false,
             :rabbitmq_present => false,
-          }
-          )
+          })
         end
 
         context "monitoring class without any parameters" do
