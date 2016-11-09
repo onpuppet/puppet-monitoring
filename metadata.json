@@ -1,18 +1,19 @@
 {
-  "name": "yuav-monitoring_facts",
+  "name": "yuav-monitoring",
   "version": "0.2.7",
   "author": "yuav",
   "summary": "Facts collection for decoupling monitoring from install",
   "license": "Apache-2.0",
-  "source": "git@github.com:Yuav/puppet-monitoring_facts.git",
-  "project_page": "https://github.com/Yuav/puppet-monitoring_facts",
-  "issues_url": "https://github.com/Yuav/puppet-monitoring_facts",
+  "source": "git@github.com:Yuav/puppet-monitoring.git",
+  "project_page": "https://github.com/Yuav/puppet-monitoring",
+  "issues_url": "https://github.com/Yuav/puppet-monitoring",
   "tags": [
     "fact",
     "facter",
     "facts",
     "monitor",
-    "monitoring"
+    "monitoring",
+    "collectd"
   ],
   "operatingsystem_support": [
     {
@@ -52,12 +53,6 @@
       ]
     },
     {
-      "operatingsystem": "SLES",
-      "operatingsystemrelease": [
-        "11 SP1"
-      ]
-    },
-    {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "6",
@@ -71,36 +66,21 @@
         "12.04",
         "14.04"
       ]
-    },
-    {
-      "operatingsystem": "Solaris",
-      "operatingsystemrelease": [
-        "10",
-        "11"
-      ]
-    },
-    {
-      "operatingsystem": "Windows",
-      "operatingsystemrelease": [
-        "Server 2003",
-        "Server 2003 R2",
-        "Server 2008",
-        "Server 2008 R2",
-        "Server 2012",
-        "Server 2012 R2",
-        "7",
-        "8"
-      ]
-    },
-    {
-      "operatingsystem": "AIX",
-      "operatingsystemrelease": [
-        "5.3",
-        "6.1",
-        "7.1"
-      ]
     }
   ],
-  "dependencies": []
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+    	"name": "puppet-collectd",
+    	"version_requirement": ">= 5.0.0"
+    },
+    {
+    	"name": "yuav-refacter",
+    	"version_requirement": ">= 0.1.0"
+    }
+  ]
 }
 

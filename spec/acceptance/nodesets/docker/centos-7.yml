@@ -1,0 +1,14 @@
+HOSTS:
+  centos-7-x64:
+    platform: el-7-x86_64
+    image: milcom/centos7-systemd
+    hypervisor: docker
+    docker_preserve_image: true
+    docker_cmd: '["/usr/sbin/init"]'
+    docker_image_commands:
+      - 'yum install -y wget tar hostname initscripts'
+      - 'touch /etc/sysconfig/network'
+
+CONFIG:
+  log_level: verbose
+  type: foss
