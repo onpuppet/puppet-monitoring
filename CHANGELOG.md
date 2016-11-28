@@ -1,3 +1,7 @@
+## 2016-11-18 Release 0.3.0
+
+* Puppet 4 support
+
 ## 2016-10-21 Release 0.2.7
 
 * Fix: Increase visibility of apache facts

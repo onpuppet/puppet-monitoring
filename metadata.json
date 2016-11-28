@@ -1,8 +1,8 @@
 {
   "name": "yuav-monitoring",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "author": "yuav",
-  "summary": "Facts collection for decoupling monitoring from install",
+  "summary": "Autodetect and install monitoring and metrics for supported services",
   "license": "Apache-2.0",
   "source": "git@github.com:Yuav/puppet-monitoring.git",
   "project_page": "https://github.com/Yuav/puppet-monitoring",
