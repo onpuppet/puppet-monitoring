@@ -79,7 +79,7 @@
     },
     {
     	"name": "yuav-refacter",
-    	"version_requirement": ">= 0.1.0"
+    	"version_requirement": ">= 1.0.0"
     }
   ]
 }
