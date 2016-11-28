@@ -9,7 +9,7 @@ class monitoring::metrics::collectd (
   class { '::collectd':
     purge           => true,
     recurse         => true,
-    purge_config    => true,
+    purge_config    => false,
     minimum_version => '5.4',
   }
 
