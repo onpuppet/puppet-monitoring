@@ -29,13 +29,14 @@ Facter.add(:apache_present) do
 end
 
 Facter.add(:apache_running) do
+  confine :apache_present => true
   setcode do
     Puppet::Type.type(:service).newservice(:name => 'apache2').provider.status == :running
   end
 end
 
 Facter.add(:apache_statuspage_present) do
-  #confine :apache_present => true
+  confine :apache_present => true
   setcode do
     uri = 'http://localhost/server-status'
     begin
