@@ -28,13 +28,10 @@ class monitoring::metrics::collectd::base {
     ignoreselected => true,
   }
 
-  class { '::collectd::plugin::load':
-  }
+  class { '::collectd::plugin::load': }
 
-  class { '::collectd::plugin::memory':
-  }
+  class { '::collectd::plugin::memory': }
 
-  class { '::collectd::plugin::uptime':
-  }
+  class { '::collectd::plugin::uptime': }
 
 }

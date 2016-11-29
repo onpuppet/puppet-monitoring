@@ -15,10 +15,8 @@ class monitoring::metrics::collectd::apache {
       instances => {
         'apache80' => {
           'url' => 'http://localhost/server-status?auto',
-        }
-        ,
-      }
-      ,
+        },
+      },
     }
   }
 }
