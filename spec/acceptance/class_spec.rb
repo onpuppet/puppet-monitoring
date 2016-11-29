@@ -9,7 +9,6 @@ describe 'redis installed' do
         class { 'monitoring': }
 
         notice("Apache present: ${::apache_present}")
-        notice("Apache statuspage present: ${::apache_statuspage_present}")
         notice("Redis present: ${::redis_present}")
         notice("Rabbitmq present: ${::rabbitmq_present}")
       EOS

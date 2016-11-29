@@ -10,7 +10,7 @@ class monitoring::metrics::collectd::apache {
     }
   }
 
-  if ($::apache_present and $::apache_statuspage_present) {
+  if ($::apache_statuspage_present) {
     class { '::collectd::plugin::apache':
       instances => {
         'apache80' => {

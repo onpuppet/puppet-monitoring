@@ -13,10 +13,7 @@ class monitoring::metrics::collectd (
     minimum_version => '5.4',
   }
 
-  collectd::plugin::network::server {
-    $collectd_network_server_hostname:
-    port => $collectd_network_server_port,
-  }
+  collectd::plugin::network::server { $collectd_network_server_hostname: port => $collectd_network_server_port, }
 
   class { '::collectd::plugin::logfile':
     log_level => 'info',
@@ -25,7 +22,9 @@ class monitoring::metrics::collectd (
 
   include ::monitoring::metrics::collectd::base
 
-  include ::monitoring::metrics::collectd::apache
+  if ($::apache_present) {
+    include ::monitoring::metrics::collectd::apache
+  }
 
   if ($::redis_present) {
     include ::monitoring::metrics::collectd::redis
