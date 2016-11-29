@@ -30,7 +30,7 @@ By default the tests use a baseline version of Puppet.
 If you have Ruby 2.x or want a specific version of Puppet,
 you must set an environment variable such as:
 
-    export PUPPET_VERSION="~> 3.2.0"
+    export PUPPET_VERSION="~> 4.8.0"
 
 Install the dependencies like so...
 
@@ -44,6 +44,7 @@ check various syntax and style things. You can run these locally with:
 
     bundle exec rake lint
     bundle exec rake syntax
+    bundle exec rake rubocop
 
 ## Running the unit tests
 

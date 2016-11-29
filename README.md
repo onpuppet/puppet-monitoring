@@ -1,37 +1,53 @@
-Puppet Monitoring Facts module
-==============================
+Puppet Monitoring
+=================
 
-[![Build Status](https://travis-ci.org/Yuav/puppet-monitoring_facts.svg)](https://travis-ci.org/yuav/puppet-monitoring_facts)
+[![Build Status](https://travis-ci.org/Yuav/puppet-monitoring.svg)](https://travis-ci.org/yuav/puppet-monitoring)
 
-Custom facts for decoupling monitoring from installation
+Module to install monitoring for any detected service supported by the module
 
 ## Module Description
 
-Enables deployment of monitoring tools to detect already installed services. This is useful
-to avoid adding monitoring code into the modules themselves. This enables modules to magically
-monitor everything installed on a machine without hard dependencies between the module that install
-and module which monitors service
+Deployment of monitoring tools which detect already installed services. This is useful to avoid adding monitoring code
+into the modules themselves, and provides a completely decoupled monitoring module. By using custom facts, which are
+updated during runtime, the module will magically install monitoring of everything installed on a machine without any
+hard dependencies between the module that install the service and the monitoring module.
 
 ## Usage
 
 Install the module using:
 
-    puppet module install yuav-monitoring_facts
+    puppet module install yuav-monitoring
 
-and use the facts it provides
+simply include the module
 
-    if ($::apache_present) {
-      # Install Apache monitoring
+    class { 'monitoring':
+      collectd_network_server_hostname => 'influxdb',
     }
 
-*Note: Puppet facts are resolved at runtime, so if apache is installed in the same Puppet run,
-add an additional check to ensure idempotency. E.G:
+This will install the default metrics collector CollectD, and configure it to send metrics to hostname 'influxdb'.
 
-    if defined(Package['apache2']) or $::apache_present {
-      # Install Apache monitoring
-    }
+Using defaults, the module will enable the following collectd plugins:
 
-## Supported facts
+Always:
+ * cpu
+ * disk
+ * df
+ * fhcount
+ * interface
+ * load
+ * memory
+ * uptime
+
+If present:
+ * apache (if statuspage is enabled)
+ * rabbitmq (if management interface enabled)
+ * redis
+
+## Custom Facts
+
+This module relies on a set of custom facts to detect any services installed. These facts are refreshed at the end
+of any ordinary Puppet run using the yuav-refacter module. This ensures that if another module installs any of these
+services, the fact values will be updated to reflect this new state before installing monitoring plugins
 
 ### Apache facts
 
@@ -43,13 +59,17 @@ Checks if apache status page with metrics is available from localhost
 
     $::apache_statuspage_present
 
-### RabbitMQ facts
+## RabbitMQ facts
 
 Checks if RabbitMQ is installed on the system
 
     $::rabbitmq_present
 
-### Redis facts
+Retrieves RabbitMQ management port if enabled
+
+    $::rabbitmq_management_port
+
+## Redis facts
 
 Checks if Redis is installed on the system
 

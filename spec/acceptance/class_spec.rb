@@ -6,8 +6,6 @@ describe 'redis installed' do
       pp = <<-EOS
         package { 'redis-server': ensure => 'present' }
 
-        #package { 'rabbitmq-server': ensure => 'present' }
-
         class { 'monitoring': }
 
         notice("Apache present: ${::apache_present}")

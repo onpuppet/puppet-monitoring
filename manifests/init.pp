@@ -19,16 +19,16 @@ class monitoring (
   # Ensure facts refresh monitoring tools are applied last
   # Would rather use custom stages instead, but stages doesn't support subclasses
   # https://tickets.puppetlabs.com/browse/PUP-1108
-  refacter { 'all': patterns => ['^apache_', '^rabbitmq_', '^redis_'] }
+  refacter { 'monitoring': patterns => ['^apache_', '^rabbitmq_', '^redis_'] }
 
   Package <| title != 'collectd' |> {
     before +> Class['monitoring::install'],
-    notify +> Refacter['all']
+    notify +> Refacter['monitoring']
   }
 
   Service <| title != 'collectd' |> {
     before +> Class['monitoring::install'],
-    notify +> Refacter['all']
+    notify +> Refacter['monitoring']
   }
 
   class { '::monitoring::install': }
