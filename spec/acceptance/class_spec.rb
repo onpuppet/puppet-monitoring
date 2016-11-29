@@ -6,6 +6,8 @@ describe 'redis installed' do
       pp = <<-EOS
         package { 'redis-server': ensure => 'present' }
 
+        #package { 'rabbitmq-server': ensure => 'present' }
+
         class { 'monitoring': }
 
         notice("Apache present: ${::apache_present}")
@@ -16,8 +18,7 @@ describe 'redis installed' do
 
       # Run it twice and test for idempotency
       apply_manifest(pp, :catch_failures => true, :debug => true)
-      #apply_manifest(pp, :catch_changes  => true)
-      # Idempotency check blocked by: https://github.com/voxpupuli/puppet-collectd/issues/554
+      apply_manifest(pp, :catch_changes  => true)
     end
 
     describe package('redis-server') do
@@ -26,7 +27,7 @@ describe 'redis installed' do
 
     describe file('/etc/collectd/conf.d/10-redis.conf') do
       it { is_expected.to be_file }
-    it { is_expected.to contain '<LoadPlugin redis>' }
+      it { is_expected.to contain '<LoadPlugin redis>' }
     end
   end
 end

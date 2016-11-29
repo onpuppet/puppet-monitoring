@@ -1,8 +1,6 @@
 #
 class monitoring::install () {
 
-  notify{"Redis present: ${::redis_present}": }
-
   case $::monitoring::metric_collector {
     'collectd' : {
       class { '::monitoring::metrics::collectd':

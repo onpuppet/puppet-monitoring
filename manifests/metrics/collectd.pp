@@ -31,7 +31,7 @@ class monitoring::metrics::collectd (
     include ::monitoring::metrics::collectd::redis
   }
 
-  if ($::rabbitmq_present) {
+  if ($::rabbitmq_present and $::rabbitmq_management_port) {
     include ::monitoring::metrics::collectd::rabbitmq
   }
 
