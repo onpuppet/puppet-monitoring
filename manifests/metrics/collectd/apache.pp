@@ -2,9 +2,11 @@
 class monitoring::metrics::collectd::apache {
   if defined(Class['apache']) {
     # Assuming puppetlabs/apache
-    class { '::apache::mod::status':
-      allow_from      => ['127.0.0.1', '::1'],
-      extended_status => 'On',
+    if defined('::apache::mod::status') and !defined(Class['::apache::mod::status']) {
+      class { '::apache::mod::status':
+        allow_from      => ['127.0.0.1', '::1'],
+        extended_status => 'On',
+      }
     }
   }
 
@@ -13,8 +15,10 @@ class monitoring::metrics::collectd::apache {
       instances => {
         'apache80' => {
           'url' => 'http://localhost/server-status?auto',
-        },
-      },
+        }
+        ,
+      }
+      ,
     }
   }
 }
