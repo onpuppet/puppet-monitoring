@@ -1,0 +1,7 @@
+---
+apache_present: false
+apache_statuspage_present: false
+collectd_version: '5.0'
+ntpd_present: false
+rabbitmq_present: false
+redis_present: false
