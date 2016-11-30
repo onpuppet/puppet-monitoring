@@ -1,3 +1,7 @@
+## 2016.11.20 Release 0.3.3
+
+* Added support for collectd ntpd plugin
+
 ## 2016-11-30 Release 0.3.2
 
 * Confine facts to group
