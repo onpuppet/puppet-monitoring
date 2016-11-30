@@ -1,3 +1,11 @@
+## 2016-11-30 Release 0.3.2
+
+* Confine facts to group
+
+## 2016-11-29 Release 0.3.1
+
+* Lint fixes and cleanup
+
 ## 2016-11-18 Release 0.3.0
 
 * Puppet 4 support
