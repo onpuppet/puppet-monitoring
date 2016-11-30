@@ -40,6 +40,7 @@ Always:
 
 If present:
  * apache (if statuspage is enabled)
+ * ntpd
  * rabbitmq (if management interface enabled)
  * redis
 
@@ -58,6 +59,12 @@ Checks if Apache is installed on the system
 Checks if apache status page with metrics is available from localhost
 
     $::apache_statuspage_present
+
+## NTPD facts
+
+Checks if ntpd is installed on the system
+
+    $::ntpd_present
 
 ## RabbitMQ facts
 
