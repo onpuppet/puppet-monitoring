@@ -26,6 +26,10 @@ class monitoring::metrics::collectd (
     include ::monitoring::metrics::collectd::apache
   }
 
+  if ($::ntpd_present) {
+    include ::monitoring::metrics::collectd::ntpd
+  }
+
   if ($::redis_present) {
     include ::monitoring::metrics::collectd::redis
   }
