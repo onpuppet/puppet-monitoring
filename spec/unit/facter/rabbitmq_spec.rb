@@ -1,5 +1,7 @@
 require "spec_helper"
 
+management_port_command = '/usr/sbin/rabbitmqctl environment | /bin/grep -A 10 rabbitmq_management | /bin/grep "listener,\[{port" | /bin/grep -o -E "[0-9]+"'
+
 describe Facter::Util::Fact do
   before do
     Facter.clear
@@ -27,7 +29,7 @@ describe Facter::Util::Fact do
     context 'with rabbitmq-server and management present' do
       it do
         Facter::Util::Resolution.stubs(:exec)
-        Facter::Util::Resolution.expects(:exec).with('/usr/sbin/rabbitmqctl environment | /bin/grep -A 2 rabbitmq_management | /bin/grep -o -E \'[0-9]+\'').returns('15672')
+        Facter::Util::Resolution.expects(:exec).with(management_port_command).returns('15672')
         expect(Facter.value(:rabbitmq_management_port)).to eq('15672')
       end
     end
@@ -35,14 +37,14 @@ describe Facter::Util::Fact do
     context 'with rabbitmq-server present without management enabled' do
       it do
         Facter::Util::Resolution.stubs(:exec)
-        Facter::Util::Resolution.expects(:exec).with('/usr/sbin/rabbitmqctl environment | /bin/grep -A 2 rabbitmq_management | /bin/grep -o -E \'[0-9]+\'').returns(nil)
+        Facter::Util::Resolution.expects(:exec).with(management_port_command).returns(nil)
         expect(Facter.value(:rabbitmq_management_port)).to eq(nil)
       end
     end
 
     context 'without rabbitmq-server installed' do
       it do
-        Facter::Util::Resolution.stubs(:exec).with('/usr/sbin/rabbitmqctl environment | /bin/grep -A 2 rabbitmq_management | /bin/grep -o -E \'[0-9]+\'').returns(nil)
+        Facter::Util::Resolution.stubs(:exec).with(management_port_command).returns(nil)
         expect(Facter.value(:rabbitmq_management_port)).to eq(nil)
       end
     end
