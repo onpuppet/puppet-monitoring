@@ -1,4 +1,8 @@
-## 2016.11.20 Release 0.3.3
+## 2016-12-02 Release 0.3.4
+
+* Fixed issue with RabbitMQ management port fact
+
+## 2016-11-20 Release 0.3.3
 
 * Added support for collectd ntpd plugin
 

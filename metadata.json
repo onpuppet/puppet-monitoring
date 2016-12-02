@@ -1,6 +1,6 @@
 {
   "name": "yuav-monitoring",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "yuav",
   "summary": "Autodetect and install monitoring and metrics for supported services",
   "license": "Apache-2.0",
