@@ -12,7 +12,7 @@ end
 
 Facter.add(:rabbitmq_management_port) do
   setcode do
-    Facter::Util::Resolution.exec('/usr/sbin/rabbitmqctl environment | /bin/grep -A 2 rabbitmq_management | /bin/grep -o -E \'[0-9]+\'')
+    Facter::Util::Resolution.exec('/usr/sbin/rabbitmqctl environment | /bin/grep -A 10 rabbitmq_management | /bin/grep "listener,\[{port" | /bin/grep -o -E "[0-9]+"')
   end
 end
 
