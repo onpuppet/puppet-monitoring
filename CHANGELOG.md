@@ -1,4 +1,8 @@
-## 2016-12-07
+## --- Release 0.3.6rc0
+
+* Metadata lint fix
+
+## 2016-12-07 Release 0.3.5
 
 * Travis-CI requirements met
 
