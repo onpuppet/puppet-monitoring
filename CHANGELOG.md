@@ -1,3 +1,7 @@
+## 2016-12-07
+
+* Travis-CI requirements met
+
 ## 2016-12-02 Release 0.3.4
 
 * Fixed issue with RabbitMQ management port fact
