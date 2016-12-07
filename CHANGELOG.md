@@ -1,5 +1,6 @@
-## --- Release 0.3.6rc0
+## 2016-12-07 Release 0.3.6
 
+* Fixed fact evaluation issue for RabbitMQ 
 * Metadata lint fix
 
 ## 2016-12-07 Release 0.3.5
