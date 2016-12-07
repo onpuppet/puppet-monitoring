@@ -17,6 +17,12 @@ SimpleCov.start do
 end
 
 RSpec.configure do |c|
+  c.before(:each) do
+    stub_request(:get, /.*/).
+      with(:headers => {'User-Agent'=>'Ruby'}).
+      to_return(:status => 200, :body => "", :headers => {})
+  end
+
   default_facts = {
     puppetversion: Puppet.version,
     facterversion: Facter.version

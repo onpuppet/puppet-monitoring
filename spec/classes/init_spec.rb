@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-stub_request(:get, "http://169.254.169.254/latest/meta-data/").
-         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-         to_return(:status => 200, :body => "", :headers => {})
-
 describe 'monitoring' do
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
