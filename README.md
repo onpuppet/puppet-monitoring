@@ -15,15 +15,16 @@ hard dependencies between the module that install the service and the monitoring
 ## Usage
 
 Install the module using:
-
-    puppet module install yuav-monitoring
+```puppet
+puppet module install yuav-monitoring
+```
 
 simply include the module
-
-    class { 'monitoring':
-      collectd_network_server_hostname => 'influxdb',
-    }
-
+```puppet
+class { 'monitoring':
+  collectd_network_server_hostname => 'influxdb',
+}
+```
 This will install the default metrics collector CollectD, and configure it to send metrics to hostname 'influxdb'.
 
 Using defaults, the module will enable the following collectd plugins:
@@ -53,31 +54,33 @@ services, the fact values will be updated to reflect this new state before insta
 ### Apache facts
 
 Checks if Apache is installed on the system
-
-    $::apache_present
+```puppet
+$::apache_present
+```
 
 Checks if apache status page with metrics is available from localhost
-
-    $::apache_statuspage_present
-
+```puppet
+$::apache_statuspage_present
+```
 ## NTPD facts
 
 Checks if ntpd is installed on the system
-
-    $::ntpd_present
-
+```puppet
+$::ntpd_present
+```
 ## RabbitMQ facts
 
 Checks if RabbitMQ is installed on the system
-
-    $::rabbitmq_present
-
+```puppet
+$::rabbitmq_present
+```
 Retrieves RabbitMQ management port if enabled
-
-    $::rabbitmq_management_port
-
+```puppet
+$::rabbitmq_management_port
+```
 ## Redis facts
 
 Checks if Redis is installed on the system
-
-    $::redis_present
+```puppet
+$::redis_present
+```
