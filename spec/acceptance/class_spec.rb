@@ -2,7 +2,7 @@ require 'spec_helper_acceptance'
 
 describe 'configure server side' do
   context 'minimal config to enable client tests' do
-    it 'should install a working server side' do
+    it 'installs a working server side' do
       pp_master = <<-EOS
         class { '::rabbitmq':
           ssl               => false,
@@ -32,14 +32,14 @@ describe 'configure server side' do
       EOS
 
       # Run it twice and test for idempotency
-      apply_manifest_on(master, pp_master, :catch_failures => true)
-      apply_manifest_on(master, pp_master, :catch_changes => true)
+      apply_manifest_on(master, pp_master, catch_failures: true)
+      apply_manifest_on(master, pp_master, catch_changes: true)
     end
   end
 end
 
 hosts.each do |host|
-  describe 'redis installed', :if => host['roles'].include?('client') do
+  describe 'redis installed', if: host['roles'].include?('client') do
     context 'during same run' do
       it 'works with no errors' do
         master_hostname = on(master, facter('hostname')).stdout.strip
@@ -57,8 +57,8 @@ hosts.each do |host|
         EOS
 
         # Run it twice and test for idempotency
-        apply_manifest(pp, :catch_failures => true)
-        apply_manifest(pp, :catch_changes => true)
+        apply_manifest(pp, catch_failures: true)
+        apply_manifest(pp, catch_changes: true)
       end
 
       describe package('redis-server') do

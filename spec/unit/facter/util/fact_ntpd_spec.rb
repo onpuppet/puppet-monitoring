@@ -1,11 +1,11 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Facter::Util::Fact do
   before do
     Facter.clear
   end
 
-  describe "ntpd present" do
+  describe 'ntpd present' do
     context 'with ntpd present' do
       it do
         Facter::Util::Resolution.stubs(:exec)

@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 management_port_command = '/usr/sbin/rabbitmqctl environment | /bin/grep -A 10 rabbitmq_management | /bin/grep "listener,\[{port" | /bin/grep -o -E "[0-9]+"'
 
@@ -7,11 +7,11 @@ describe Facter::Util::Fact do
     Facter.clear
   end
 
-  describe "rabbitmq present" do
+  describe 'rabbitmq present' do
     context 'with rabbitmq-server present' do
       it do
         Facter::Util::Resolution.stubs(:exec)
-        Facter::Util::Resolution.expects(:which).with("rabbitmq-server").returns(true)
+        Facter::Util::Resolution.expects(:which).with('rabbitmq-server').returns(true)
         expect(Facter.value(:rabbitmq_present)).to eq(true)
       end
     end
@@ -19,7 +19,7 @@ describe Facter::Util::Fact do
     context 'with rabbitmq-server absent' do
       it do
         Facter::Util::Resolution.stubs(:exec)
-        Facter::Util::Resolution.expects(:which).with("rabbitmq-server").returns(false)
+        Facter::Util::Resolution.expects(:which).with('rabbitmq-server').returns(false)
         expect(Facter.value(:rabbitmq_present)).to eq(false)
       end
     end

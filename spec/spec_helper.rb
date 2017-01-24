@@ -1,28 +1,25 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-facts'
-require 'webmock/rspec'
-
 include RspecPuppetFacts
 
-require 'simplecov'
-require 'simplecov-console'
-
-SimpleCov.start do
-  add_filter '/spec'
-  add_filter '/vendor'
-  formatter SimpleCov::Formatter::MultiFormatter.new([
+if Dir.exist?(File.expand_path('../../lib', __FILE__))
+  require 'coveralls'
+  require 'simplecov'
+  require 'simplecov-console'
+  SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::Console
-  ])
+    SimpleCov::Formatter::Console,
+    Coveralls::SimpleCov::Formatter
+  ]
+  SimpleCov.start do
+    track_files 'lib/**/*.rb'
+    add_filter '/spec'
+    add_filter '/vendor'
+    add_filter '/.vendor'
+  end
 end
 
 RSpec.configure do |c|
-  c.before(:each) do
-    stub_request(:get, /.*/).
-      with(:headers => {'User-Agent'=>'Ruby'}).
-      to_return(:status => 200, :body => "", :headers => {})
-  end
-
   default_facts = {
     puppetversion: Puppet.version,
     facterversion: Facter.version
@@ -31,3 +28,5 @@ RSpec.configure do |c|
   default_facts.merge!(YAML.load(File.read(File.expand_path('../default_module_facts.yml', __FILE__)))) if File.exist?(File.expand_path('../default_module_facts.yml', __FILE__))
   c.default_facts = default_facts
 end
+
+# vim: syntax=ruby

@@ -8,15 +8,15 @@ describe 'monitoring' do
           facts
         end
 
-        context "monitoring class without any parameters" do
+        context 'monitoring class without any parameters' do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('monitoring::params') }
         end
 
-        context "rabbitmq present" do
+        context 'rabbitmq present' do
           let(:facts) do
-            facts.merge({rabbitmq_present: true, rabbitmq_management_present: true, rabbitmq_management_port: '15672'})
+            facts.merge(rabbitmq_present: true, rabbitmq_management_present: true, rabbitmq_management_port: '15672')
           end
 
           it { is_expected.to contain_class('monitoring::metrics::collectd') }
@@ -37,12 +37,12 @@ describe 'monitoring' do
     describe 'monitoring class without any parameters on Solaris/Nexenta' do
       let(:facts) do
         {
-          :osfamily        => 'Solaris',
-          :operatingsystem => 'Nexenta',
+          osfamily:        'Solaris',
+          operatingsystem: 'Nexenta'
         }
       end
 
-      it { expect { is_expected.to contain_package('monitoring') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+      it { expect { is_expected.to contain_package('monitoring') }.to raise_error(Puppet::Error, %r{Nexenta not supported}) }
     end
   end
 end

@@ -21,33 +21,36 @@ end
 Facter.add(:apache_present) do
   setcode do
     present = Facter::Util::Resolution.which('apachectl')
-    if not present
-      present = Facter::Util::Resolution.which('apache2ctl')
-    end
+    present = Facter::Util::Resolution.which('apache2ctl') unless present
     !!present
   end
 end
 
 Facter.add(:apache_running) do
-  confine :apache_present => true
+  confine apache_present: true
   setcode do
-    Puppet::Type.type(:service).newservice(:name => 'apache2').provider.status == :running
+    Puppet::Type.type(:service).newservice(name: 'apache2').provider.status == :running
   end
 end
 
 Facter.add(:apache_statuspage_present) do
-  confine :apache_present => true
+  confine apache_present: true
   setcode do
     uri = 'http://localhost/server-status'
     begin
       response = fetch(uri)
-      !!(response.body =~ /<title>Apache Status<\/title>/i)
-    rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
-             Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError, Errno::ECONNREFUSED
+      !!(response.body =~ %r{<title>Apache Status</title>}i)
+    rescue Timeout::Error,
+           Errno::EINVAL,
+           Errno::ECONNRESET,
+           EOFError,
+           Net::HTTPBadResponse,
+           Net::HTTPHeaderSyntaxError,
+           Net::ProtocolError,
+           Errno::ECONNREFUSED
       false
     end
   end
 end
 
-# TODO: use a full apache conf parser like https://github.com/bmatzelle/apache_config
-# and look for "SetHandler server-status"
+# TODO; use a full apache conf parser like https://github.com/bmatzelle/apache_config and look for "SetHandler server-status"
