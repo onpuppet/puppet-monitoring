@@ -12,9 +12,16 @@
 #   Supported tools: collectd
 #
 class monitoring (
-  $metric_collector                 = $::monitoring::params::metric_collector,
+  $metrics_tool                     = $::monitoring::params::metrics_tool,
   $collectd_network_server_hostname = $::monitoring::params::collectd_network_server_hostname,
-  $collectd_network_server_port     = $::monitoring::params::collectd_network_server_port,) inherits ::monitoring::params {
+  $collectd_network_server_port     = $::monitoring::params::collectd_network_server_port,
+  $monitoring_tool                  = $::monitoring::params::monitoring_tool,
+  $sensu_disk_usage_magic_factor    = $::monitoring::params::sensu_disk_usage_magic_factor,
+  $sensu_rabbitmq_hostname          = $::monitoring::params::sensu_rabbitmq_hostname,
+  $sensu_rabbitmq_password          = $::monitoring::params::sensu_rabbitmq_password,
+) inherits ::monitoring::params {
+
+  validate_numeric($sensu_disk_usage_magic_factor)
 
   # Ensure facts refresh monitoring tools are applied last
   # Would rather use custom stages instead, but stages doesn't support subclasses

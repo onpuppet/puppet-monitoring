@@ -19,19 +19,14 @@ HOSTS:
       - 'apt-get install -y net-tools wget'
       - 'locale-gen en_US.UTF-8'
 
-  ubuntu-1404-x64:
-    roles:
-      - client
-    platform: ubuntu-14.04-amd64
+  centos-7-x64:
+    platform: el-7-x86_64
     hypervisor: docker
-    image: ubuntu:14.04
+    image: centos:7
     docker_preserve_image: true
-    docker_cmd: '["/sbin/init"]'
+    docker_cmd: '["/usr/sbin/init"]'
     docker_image_commands:
-      - 'rm /usr/sbin/policy-rc.d'
-      - 'rm /sbin/initctl; dpkg-divert --rename --remove /sbin/initctl'
-      - 'apt-get install -y net-tools wget'
-      - 'locale-gen en_US.UTF-8'
+      - 'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which'
 
 CONFIG:
   type: aio

@@ -4,8 +4,8 @@
 # Collect metrics using collectd. Will attempt to collectd metrics from all supported types by default
 #
 class monitoring::metrics::collectd (
-  $collectd_network_server_hostname = $::monitoring::params::collectd_network_server_hostname,
-  $collectd_network_server_port     = $::monitoring::params::collectd_network_server_port,) {
+  $network_server_hostname = $::monitoring::collectd_network_server_hostname,
+  $network_server_port     = $::monitoring::collectd_network_server_port,) {
   class { '::collectd':
     purge           => true,
     recurse         => true,
@@ -13,7 +13,7 @@ class monitoring::metrics::collectd (
     minimum_version => '5.4',
   }
 
-  collectd::plugin::network::server { $collectd_network_server_hostname: port => $collectd_network_server_port, }
+  collectd::plugin::network::server { $network_server_hostname: port => $network_server_port, }
 
   class { '::collectd::plugin::logfile':
     log_level => 'info',

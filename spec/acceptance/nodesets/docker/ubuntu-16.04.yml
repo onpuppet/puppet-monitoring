@@ -1,16 +1,44 @@
 HOSTS:
-  ubuntu-1604-x64:
+  master:
+    roles:
+      - master
     default_apply_opts:
       order: random
       strict_variables:
     platform: ubuntu-16.04-amd64
     hypervisor: docker
     image: ubuntu:16.04
+    mount_folders:
+      sysfscgroup:
+        host_path: /sys/fs/cgroup
+        container_path: /sys/fs/cgroup
+        opts: ro
     docker_preserve_image: true
     docker_cmd: '["/sbin/init"]'
     docker_image_commands:
       - 'apt-get install -y net-tools wget'
       - 'locale-gen en_US.UTF-8'
+
+  ubuntu-1604-x64:
+    roles:
+      - client
+    default_apply_opts:
+      order: random
+      strict_variables:
+    platform: ubuntu-16.04-amd64
+    hypervisor: docker
+    image: ubuntu:16.04
+    mount_folders:
+      sysfscgroup:
+        host_path: /sys/fs/cgroup
+        container_path: /sys/fs/cgroup
+        opts: ro
+    docker_preserve_image: true
+    docker_cmd: '["/sbin/init"]'
+    docker_image_commands:
+      - 'apt-get install -y net-tools wget'
+      - 'locale-gen en_US.UTF-8'
+
 CONFIG:
   type: aio
   log_level: debug

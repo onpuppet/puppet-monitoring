@@ -26,6 +26,9 @@ describe Facter::Util::Fact do
   end
 
   describe 'rabbitmq management port' do
+    before do
+      Facter.fact(:rabbitmq_present).stubs(:value).returns true
+    end
     context 'with rabbitmq-server and management present' do
       it do
         Facter::Util::Resolution.stubs(:exec)

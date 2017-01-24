@@ -1,10 +1,13 @@
 fixtures:
   repositories:
+    apt: 
+      repo: 'git://github.com/puppetlabs/puppetlabs-apt'
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     concat: "https://github.com/puppetlabs/puppetlabs-concat.git"
     collectd: "https://github.com/Yuav/puppet-collectd.git"
     yum: "https://github.com/voxpupuli/puppet-yum.git"
   forge_modules:
     refacter: "yuav/refacter"
+    sensu: "sensu/sensu"
   symlinks:
     monitoring: "#{source_dir}"
