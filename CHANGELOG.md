@@ -1,3 +1,7 @@
+## 2017-25-01 Release 1.0.0
+
+* Added support for Sensu monitoring checks
+
 ## 2016-12-07 Release 0.3.6
 
 * Fixed fact evaluation issue for RabbitMQ 
