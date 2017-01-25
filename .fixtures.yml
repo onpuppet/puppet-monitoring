@@ -7,7 +7,6 @@ fixtures:
     collectd: "https://github.com/Yuav/puppet-collectd.git"
     yum: 
       repo: "https://github.com/voxpupuli/puppet-yum"
-      ref: "0.10.0"
   forge_modules:
     refacter: "yuav/refacter"
     sensu: 
