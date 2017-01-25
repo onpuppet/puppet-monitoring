@@ -45,7 +45,7 @@ describe 'monitoring::monitoring::sensu', type: :class do
         it { is_expected.to contain_sensu__check('redis-process') }
       end
 
-      context 'rabbitmq absent' do
+      context 'services absent' do
         let :facts do
           facts.merge(
             centrify_present: false,
