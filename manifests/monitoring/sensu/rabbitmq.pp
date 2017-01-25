@@ -41,9 +41,4 @@ class monitoring::monitoring::sensu::rabbitmq (
   sensu::check { 'rabbitmq-node-health':
     command => "${plugins_location}check-rabbitmq-node-health.rb",
   }
-
-  ## https://github.com/sensu-plugins/sensu-plugins-rabbitmq/pull/34
-  #sensu::check { 'rabbitmq-queue-drain-time':
-  #  command => "${plugins_location}check-rabbitmq-queue-drain-time.rb",
-  #}
 }
