@@ -2,8 +2,9 @@
 #==================================
 #
 class monitoring::monitoring::sensu::base (
-  $plugins_location        = $::monitoring::sensu_plugins_location,
-  $disk_usage_magic_factor = $::monitoring::sensu_disk_usage_magic_factor,) {
+  $plugins_location        = '/opt/sensu/embedded/bin/',
+  $disk_usage_magic_factor = '0.9',) {
+
   package { [
     'sensu-plugins-cpu-checks',
     'sensu-plugins-memory-checks',

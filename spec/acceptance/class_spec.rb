@@ -23,12 +23,6 @@ describe 'configure server side' do
             enabled => true,
           }
         }
-
-        #class { '::sensu':
-        #  server                   => true,
-        #  api                      => true,
-        #  rabbitmq_password        => 'guest',
-        #}
       EOS
 
       # Run it twice and test for idempotency

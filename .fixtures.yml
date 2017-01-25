@@ -8,6 +8,8 @@ fixtures:
     yum: "https://github.com/voxpupuli/puppet-yum.git"
   forge_modules:
     refacter: "yuav/refacter"
-    sensu: "sensu/sensu"
+    sensu: 
+      repo: "sensu/sensu"
+      ref: '2.1.0'
   symlinks:
     monitoring: "#{source_dir}"

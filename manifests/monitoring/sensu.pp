@@ -21,24 +21,37 @@ class monitoring::monitoring::sensu (
 
   include ::monitoring::monitoring::sensu::base
 
+  if ($::centrify_present) {
+    include ::monitoring::monitoring::sensu::centrify
+  }
+
+  # Special case collectd, as it may be installed during last stage by this module
+  if (defined(Package['collectd']) or $::collectd_present) {
+    include ::monitoring::monitoring::sensu::collectd
+  }
+
+  if ($::elasticsearch_present) {
+    include ::monitoring::monitoring::sensu::elasticsearch
+  }
+
+  if ($::influxdb_present) {
+    include ::monitoring::monitoring::sensu::influxdb
+  }
+
+  if ($::mysql_present) {
+    include ::monitoring::monitoring::sensu::mysql
+  }
+
+  if ($::postfix_present) {
+    include ::monitoring::monitoring::sensu::postfix
+  }
+
+  if ($::rabbitmq_present) {
+    include ::monitoring::monitoring::sensu::rabbitmq
+  }
+
   if ($::redis_present) {
     include ::monitoring::monitoring::sensu::redis
   }
 
-  #  $services = [
-  #    'collectd',
-  #    'centrify',
-  #    'elasticsearch',
-  #    'influxdb',
-  #    'mysql',
-  #    'postfix',
-  #    'rabbitmq',
-  #    'redis',
-  #  ]
-  #
-  #  $services.each |$service| {
-  #    if defined(Class[$service]) {
-  #      class { "::lysaker_sensu::checks::${service}": }
-  #    }
-  #  }
 }

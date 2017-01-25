@@ -2,7 +2,7 @@
 # ===========================================
 #
 class monitoring::monitoring::sensu::redis (
-  $plugins_location = $::monitoring::sensu_plugins_location,
+  $plugins_location = '/opt/sensu/embedded/bin/',
 ) {
 
   package { 'sensu-plugins-redis':

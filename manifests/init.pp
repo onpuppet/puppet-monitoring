@@ -17,6 +17,7 @@ class monitoring (
   $collectd_network_server_port     = $::monitoring::params::collectd_network_server_port,
   $monitoring_tool                  = $::monitoring::params::monitoring_tool,
   $sensu_disk_usage_magic_factor    = $::monitoring::params::sensu_disk_usage_magic_factor,
+  $sensu_plugins_location           = $::monitoring::params::sensu_plugins_location,
   $sensu_rabbitmq_hostname          = $::monitoring::params::sensu_rabbitmq_hostname,
   $sensu_rabbitmq_password          = $::monitoring::params::sensu_rabbitmq_password,
 ) inherits ::monitoring::params {
