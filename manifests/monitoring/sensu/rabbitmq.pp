@@ -5,12 +5,22 @@ class monitoring::monitoring::sensu::rabbitmq (
   $plugins_location = '/opt/sensu/embedded/bin/',
 ) {
 
-  package { ['make', 'g++']:
-    ensure   => 'present',
-  } ->
+  if !defined(Package['g++']) {
+    package { 'g++':
+      ensure => 'present',
+    }
+  }
+
+  if !defined(Package['make']) {
+    package { 'make':
+      ensure => 'present',
+    }
+  }
+
   package { 'sensu-plugins-rabbitmq':
     ensure   => 'present',
     provider => sensu_gem,
+    require  => [Package['make'], Package['g++']],
   }
 
   sensu::check { 'rabbitmq-alive':

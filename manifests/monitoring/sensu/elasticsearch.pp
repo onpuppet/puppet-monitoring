@@ -5,9 +5,24 @@ class monitoring::monitoring::sensu::elasticsearch (
   $plugins_location = '/opt/sensu/embedded/bin/',
 ) {
 
-  package { ['gcc', 'g++', 'make']:
-    ensure => 'present',
+  if !defined(Package['gcc']) {
+    package { 'gcc':
+      ensure => 'present',
+    }
   }
+
+  if !defined(Package['g++']) {
+    package { 'g++':
+      ensure => 'present',
+    }
+  }
+
+  if !defined(Package['make']) {
+    package { 'make':
+      ensure => 'present',
+    }
+  }
+
   package { 'sensu-plugins-elasticsearch':
     ensure   => 'present',
     provider => sensu_gem,
