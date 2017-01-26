@@ -1,3 +1,8 @@
+## 2017-26-01 Release 1.0.1
+
+* Refactored params
+* Improved documentation
+
 ## 2017-25-01 Release 1.0.0
 
 * Added support for Sensu monitoring checks
