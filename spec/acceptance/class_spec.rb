@@ -42,7 +42,8 @@ hosts.each do |host|
           package { 'redis-server': ensure => 'present' }
 
           class { 'monitoring':
-            sensu_rabbitmq_hostname => "#{master_hostname}",
+            collectd_network_server_hostname => 'dummy',
+            sensu_rabbitmq_hostname          => "#{master_hostname}",
           }
 
           notice("Apache present: ${::apache_present}")
