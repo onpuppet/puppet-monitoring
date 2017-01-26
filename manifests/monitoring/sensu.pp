@@ -13,7 +13,7 @@ class monitoring::monitoring::sensu (
       api               => false,
       rabbitmq_host     => $rabbitmq_hostname,
       rabbitmq_password => $rabbitmq_password,
-      purge             => true,
+      purge             => false,
       use_embedded_ruby => true,
       safe_mode         => true,
     }
