@@ -1,3 +1,7 @@
+## 2017-26-01 Release 1.0.2
+
+* Ensure checks aren't removed after deployment
+
 ## 2017-26-01 Release 1.0.1
 
 * Refactored params
