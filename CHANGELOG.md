@@ -1,3 +1,7 @@
+## 2017-00-00 Release 1.0.4-rc0
+
+* Fixed issue with rabbitmq management port fact
+
 ## 2017-27-01 Release 1.0.3
 
 * Fixes to Sensu checks
