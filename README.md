@@ -20,7 +20,7 @@ Module to install monitoring for any detected service supported
 Detects installed services by using custom facts. This enables complete decoupling of monitoring from deployment of services.
 The module provides a highly opinionated monitoring client setup, and assumes the existence of server side components being available.
 
-With the help of yuav-refacter, the services installed during the same run will cause facts refresh prior to installing monitoring tools
+With the help of [yuav-refacter](https://github.com/Yuav/puppet-refacter), the services installed during the same run will cause facts refresh prior to installing monitoring tools
 
 Decoupling monitoring module from other modules is useful in order to avoid adding monitoring code
 into the modules themselves. The module will magically install monitoring of everything installed on a machine without any
