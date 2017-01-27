@@ -3,6 +3,7 @@
 #
 class monitoring::monitoring::sensu::centrify (
   $plugins_location = '/opt/sensu/embedded/bin/',
+  $homedir_path = '/home'
 ) {
 
   package { 'sensu-plugins-centrify':
@@ -15,7 +16,7 @@ class monitoring::monitoring::sensu::centrify (
   }
 
   sensu::check { 'void-homedirs':
-    command  => "${plugins_location}check-void-homedirs.rb --path /export/home/",
+    command  => "${plugins_location}check-void-homedirs.rb --path ${homedir_path}",
     interval => 3600,
   }
 }

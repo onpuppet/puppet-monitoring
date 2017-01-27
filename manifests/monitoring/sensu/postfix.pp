@@ -14,6 +14,6 @@ class monitoring::monitoring::sensu::postfix (
     command => "${plugins_location}check-mailq.rb --warnnum 10 --critnum 20",
   }
   sensu::check { 'mail-delay':
-    command => "${plugins_location}check-mail-delay.rb --warnnum 10 -critnum 20",
+    command => "${plugins_location}check-mail-delay.rb --warnnum 10 --critnum 20",
   }
 }

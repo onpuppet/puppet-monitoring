@@ -1,5 +1,4 @@
 # Class: monitoring::monitoring::sensu
-#===================================
 #
 class monitoring::monitoring::sensu (
   $rabbitmq_hostname     = $::monitoring::sensu_rabbitmq_hostname,
