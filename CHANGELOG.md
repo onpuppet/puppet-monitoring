@@ -1,21 +1,25 @@
-## 2017-27-01 Release 1.0.4
+## 2017-01-27 Release 1.0.5
+
+* Fixed issue with RabbitMQ management not present
+
+## 2017-01-27 Release 1.0.4
 
 * Fixed issue with rabbitmq management port fact
 
-## 2017-27-01 Release 1.0.3
+## 2017-01-27 Release 1.0.3
 
 * Fixes to Sensu checks
 
-## 2017-26-01 Release 1.0.2
+## 2017-01-26 Release 1.0.2
 
 * Ensure checks aren't removed after deployment
 
-## 2017-26-01 Release 1.0.1
+## 2017-01-26 Release 1.0.1
 
 * Refactored params
 * Improved documentation
 
-## 2017-25-01 Release 1.0.0
+## 2017-01-25 Release 1.0.0
 
 * Added support for Sensu monitoring checks
 
