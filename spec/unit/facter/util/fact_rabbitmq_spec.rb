@@ -38,6 +38,8 @@ describe Facter::Util::Fact do
     end
 
     context 'with rabbitmq-server present without management enabled' do
+      Facter.fact(:rabbitmq_present).stubs(:value).returns true
+      Facter.fact(:rabbitmq_management_present).stubs(:value).returns true
       it do
         Facter::Util::Resolution.stubs(:exec)
         Facter::Util::Resolution.expects(:exec).with(management_port_command).returns(nil)
@@ -47,7 +49,7 @@ describe Facter::Util::Fact do
 
     context 'without rabbitmq-server installed' do
       it do
-        Facter::Util::Resolution.stubs(:exec).with(management_port_command).returns(nil)
+        Facter.fact(:rabbitmq_present).stubs(:value).returns false
         expect(Facter.value(:rabbitmq_management_port)).to eq(nil)
       end
     end
