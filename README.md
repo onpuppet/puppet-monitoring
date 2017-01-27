@@ -1,7 +1,7 @@
 Puppet Monitoring
 =================
 
-[![Build Status](https://travis-ci.org/Yuav/puppet-monitoring.svg)](https://travis-ci.org/yuav/puppet-monitoring)
+[![Build Status](https://travis-ci.org/Yuav/puppet-monitoring.svg)](https://travis-ci.org/Yuav/puppet-monitoring)
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
