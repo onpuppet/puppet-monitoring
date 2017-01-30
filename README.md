@@ -67,6 +67,18 @@ If present:
  * rabbitmq (if management interface enabled)
  * redis
 
+#### RabbitMQ plugin
+
+To get metrics from RabbitMQ, the management module needs to be enabled. This can be done like so;
+
+    rabbitmq-plugins enable rabbitmq_management
+
+CollectD will use user "guest" by default. This user is available and only available from localhost on default installations.
+On a non-default installation you might get 401 permission denied errors in CollectD plugin logs. You can fix this by;
+
+    rabbitmqctl set_user_tags guest monitoring
+    rabbitmqctl -q list_vhosts | xargs -n1 rabbitmqctl set_permissions guest ".*" ".*" ".*" -p
+
 ### Sensu plugins
 
 Default:
