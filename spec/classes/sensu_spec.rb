@@ -39,7 +39,7 @@ describe 'monitoring::monitoring::sensu', type: :class do
         it { is_expected.to contain_sensu__check('mailq') }
 
         it { is_expected.to contain_class('monitoring::monitoring::sensu::rabbitmq') }
-        it { is_expected.to contain_sensu__check('rabbitmq-alive') }
+        it { is_expected.to contain_sensu__check('rabbitmq-amqp-alive') }
 
         it { is_expected.to contain_class('monitoring::monitoring::sensu::redis') }
         it { is_expected.to contain_sensu__check('redis-process') }
