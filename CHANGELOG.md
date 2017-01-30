@@ -1,3 +1,7 @@
+## 2017-01-30 Release 1.0.6
+
+* Added option to turn off void homedir monitoring in Centrify sensu plugin
+
 ## 2017-01-27 Release 1.0.5
 
 * Fixed issue with RabbitMQ management not present
