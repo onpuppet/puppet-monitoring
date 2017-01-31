@@ -17,6 +17,7 @@
 class monitoring (
   Optional[String] $collectd_network_server_hostname,
   Optional[Integer[0, 65535]] $collectd_network_server_port,
+  Optional[String] $sensu_plugins_location,
   Optional[String] $sensu_rabbitmq_hostname,
   Optional[String] $sensu_rabbitmq_password,) {
 

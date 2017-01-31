@@ -1,5 +1,0 @@
----
-monitoring::collectd_network_server_hostname: ~
-monitoring::collectd_network_server_port: 25826
-monitoring::sensu_rabbitmq_hostname: ~
-monitoring::sensu_rabbitmq_password: 'guest'

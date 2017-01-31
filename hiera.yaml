@@ -1,6 +1,6 @@
 ---
 version: 4
-datadir: params
+datadir: hieradata
 hierarchy:
   - name: "Full Version"
     backend: yaml

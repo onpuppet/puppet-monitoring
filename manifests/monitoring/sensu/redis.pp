@@ -7,7 +7,7 @@
 # @param plugins_location [String] Location of sensu plugins. Default value: /opt/sensu/embedded/bin/
 #
 class monitoring::monitoring::sensu::redis (
-  $plugins_location = '/opt/sensu/embedded/bin/',
+  String $plugins_location,
 ) {
 
   package { 'sensu-plugins-redis':

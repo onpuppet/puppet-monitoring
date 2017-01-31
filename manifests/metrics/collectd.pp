@@ -10,8 +10,8 @@
 # @param network_server_port Optional[Integer[0, 65535]] Port used by CollectD network server. Valid options: unsigned shortint digit. Default value: undef
 #
 class monitoring::metrics::collectd (
-  $network_server_hostname = $::monitoring::collectd_network_server_hostname,
-  $network_server_port     = $::monitoring::collectd_network_server_port,) {
+  String $network_server_hostname,
+  Integer[0, 65535] $network_server_port,) {
   class { '::collectd':
     purge           => true,
     recurse         => true,

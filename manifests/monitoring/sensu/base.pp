@@ -8,8 +8,8 @@
 # @param disk_usage_magic_factor [String] Magic factor for Sensu used for disk plugin. Default value: 0.9
 #
 class monitoring::monitoring::sensu::base (
-  $plugins_location        = '/opt/sensu/embedded/bin/',
-  $disk_usage_magic_factor = '0.9',) {
+  String $plugins_location,
+  String $disk_usage_magic_factor,) {
 
   package { [
     'sensu-plugins-cpu-checks',

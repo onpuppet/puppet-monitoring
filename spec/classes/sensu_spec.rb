@@ -43,6 +43,32 @@ describe 'monitoring::monitoring::sensu', type: :class do
 
         it { is_expected.to contain_class('monitoring::monitoring::sensu::redis') }
         it { is_expected.to contain_sensu__check('redis-process') }
+          
+        describe "monitoring::monitoring::sensu::base" do
+          it { should contain_sensu__check('memory').with({
+                        'command' => '/opt/sensu/embedded/bin/check-memory.rb'})
+          }
+          
+          it { should contain_sensu__check('disk-usage').with({
+                        'command' => /-m 0.9$/})
+          }
+        end
+        
+        describe "monitoring::monitoring::sensu::centrify" do
+          it { should contain_sensu__check('centrify-process').with({
+            'command' => /--pattern adclient/})
+          }
+          
+          it { should contain_sensu__check('void-homedirs').with({
+            'command' => /--path \/home$/})
+          }
+        end
+        
+        describe "monitoring::monitoring::sensu::collectd" do
+          it { should contain_sensu__check('collectd-process').with({
+            'command' => /--pattern collectd/})
+          }
+        end
       end
 
       context 'services absent' do

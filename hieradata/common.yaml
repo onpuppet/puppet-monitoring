@@ -1,0 +1,24 @@
+---
+monitoring::collectd_network_server_hostname: ~
+monitoring::collectd_network_server_port: 25826
+monitoring::sensu_plugins_location: '/opt/sensu/embedded/bin/'
+monitoring::sensu_rabbitmq_hostname: ~
+monitoring::sensu_rabbitmq_password: 'guest'
+monitoring::monitoring::collectd::network_server_hostname: "%{'monitoring::collectd_network_server_hostname'}"
+monitoring::monitoring::collectd::network_server_port: "%{'monitoring::collectd_network_server_port'}"
+monitoring::monitoring::sensu::rabbitmq_hostname: "%{'monitoring::sensu_rabbitmq_hostname'}"
+monitoring::monitoring::sensu::rabbitmq_password: "%{'monitoring::sensu_rabbitmq_password'}"
+monitoring::monitoring::sensu::base::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::base::disk_usage_magic_factor: '0.9'
+monitoring::monitoring::sensu::centrify::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::centrify::homedir_path: '/home'
+monitoring::monitoring::sensu::centrify::monitor_homedir: true
+monitoring::monitoring::sensu::collectd::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::elasticsearch::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::influxdb::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::mysql::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::mysql::username: ~
+monitoring::monitoring::sensu::mysql::password: ~
+monitoring::monitoring::sensu::postfix::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::rabbitmq::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::redis::plugins_location: "%{'monitoring::sensu_plugins_location'}"

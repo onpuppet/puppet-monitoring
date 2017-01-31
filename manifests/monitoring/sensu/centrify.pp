@@ -9,9 +9,9 @@
 # @param monitor_void_homedirs [Boolean] Enable or disable check for obsoleted home folders. Default value: true
 #
 class monitoring::monitoring::sensu::centrify (
-  String $plugins_location = '/opt/sensu/embedded/bin/',
-  String $homedir_path = '/home',
-  Boolean $monitor_void_homedirs = true
+  String $plugins_location,
+  String $homedir_path,
+  Boolean $monitor_void_homedirs,
 ) {
 
   package { 'sensu-plugins-centrify':

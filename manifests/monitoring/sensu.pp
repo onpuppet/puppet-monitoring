@@ -10,8 +10,8 @@
 # @param rabbitmq_password [String] RabbitMQ hostname used by Sensu server. Default value: 'guest'
 #
 class monitoring::monitoring::sensu (
-  $rabbitmq_hostname     = $::monitoring::sensu_rabbitmq_hostname,
-  $rabbitmq_password     = $::monitoring::sensu_rabbitmq_password,
+  String $rabbitmq_hostname,
+  String $rabbitmq_password,
 ) {
 
   # Don't override sensu install on sensu server node

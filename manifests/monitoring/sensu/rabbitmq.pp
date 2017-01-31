@@ -6,7 +6,9 @@
 #
 # @param plugins_location [String] Location of sensu plugins. Default value: /opt/sensu/embedded/bin/
 #
-class monitoring::monitoring::sensu::rabbitmq ($plugins_location = '/opt/sensu/embedded/bin/',) {
+class monitoring::monitoring::sensu::rabbitmq (
+  String $plugins_location,
+) {
   if !defined(Package['g++']) {
     package { 'g++': ensure => 'present', }
   }
