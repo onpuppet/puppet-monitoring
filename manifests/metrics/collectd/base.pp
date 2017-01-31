@@ -1,3 +1,8 @@
+# Class: monitoring::metrics::collectd::base
+#
+# @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
+#
+# @see https://yuav.github.io/puppet-monitoring Monitoring
 #
 class monitoring::metrics::collectd::base {
   class { '::collectd::plugin::cpu':

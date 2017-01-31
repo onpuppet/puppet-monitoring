@@ -1,3 +1,8 @@
+# Class: monitoring::metrics::collectd::rabbitmq
+#
+# @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
+#
+# @see https://yuav.github.io/puppet-monitoring Monitoring
 #
 class monitoring::metrics::collectd::rabbitmq {
   if ($::rabbitmq_management_port) {

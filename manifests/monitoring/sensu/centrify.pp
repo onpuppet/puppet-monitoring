@@ -1,10 +1,17 @@
 # Class: monitoring::monitoring::centrify
-#======================================
+#
+# @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
+#
+# @see https://yuav.github.io/puppet-monitoring Monitoring
+#
+# @param plugins_location [String] Location of sensu plugins. Default value: /opt/sensu/embedded/bin/
+# @param homedir_path [String] Path to check for home folders of deleted users. Default value: /home
+# @param monitor_void_homedirs [Boolean] Enable or disable check for obsoleted home folders. Default value: true
 #
 class monitoring::monitoring::sensu::centrify (
-  $plugins_location = '/opt/sensu/embedded/bin/',
-  $homedir_path = '/home',
-  $monitor_void_homedirs = true
+  String $plugins_location = '/opt/sensu/embedded/bin/',
+  String $homedir_path = '/home',
+  Boolean $monitor_void_homedirs = true
 ) {
 
   package { 'sensu-plugins-centrify':

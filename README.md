@@ -67,6 +67,17 @@ If present:
  * rabbitmq (if management interface enabled)
  * redis
 
+#### Apache plugin
+
+This plugin gets metrics from the mod_status page in Apache. If using Puppetlabs-apache module, this page can be enabled like so;
+
+```puppet
+class { '::apache::mod::status':
+  allow_from      => ['127.0.0.1', '::1'],
+  extended_status => 'On',
+}
+```
+
 #### RabbitMQ plugin
 
 To get metrics from RabbitMQ, the management module needs to be enabled. This can be done like so;

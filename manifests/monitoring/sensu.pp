@@ -1,5 +1,14 @@
 # Class: monitoring::monitoring::sensu
 #
+# Deploys client checks for Sensu. Will enable checks for all supported services found
+#
+# @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
+#
+# @see https://yuav.github.io/puppet-monitoring Monitoring
+#
+# @param rabbitmq_hostname [String] RabbitMQ hostname used by Sensu server. Default value: ''
+# @param rabbitmq_password [String] RabbitMQ hostname used by Sensu server. Default value: 'guest'
+#
 class monitoring::monitoring::sensu (
   $rabbitmq_hostname     = $::monitoring::sensu_rabbitmq_hostname,
   $rabbitmq_password     = $::monitoring::sensu_rabbitmq_password,

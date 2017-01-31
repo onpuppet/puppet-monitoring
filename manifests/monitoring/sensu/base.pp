@@ -1,5 +1,11 @@
 # Class: lysaker_sensu::checks::base
-#==================================
+#
+# @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
+#
+# @see https://yuav.github.io/puppet-monitoring Monitoring
+#
+# @param plugins_location [String] Location of sensu plugins. Default value: /opt/sensu/embedded/bin/
+# @param disk_usage_magic_factor [String] Magic factor for Sensu used for disk plugin. Default value: 0.9
 #
 class monitoring::monitoring::sensu::base (
   $plugins_location        = '/opt/sensu/embedded/bin/',

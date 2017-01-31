@@ -1,5 +1,10 @@
 # Class: monitoring::monitoring::elasticsearch
-# ===========================================
+#
+# @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
+#
+# @see https://yuav.github.io/puppet-monitoring Monitoring
+#
+# @param plugins_location [String] Location of sensu plugins. Default value: /opt/sensu/embedded/bin/
 #
 class monitoring::monitoring::sensu::elasticsearch (
   $plugins_location = '/opt/sensu/embedded/bin/',
