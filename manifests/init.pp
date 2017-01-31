@@ -9,16 +9,16 @@
 #
 # @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
 #
-# @param collectd_network_server_hostname [String] Hostname of CollectD network server (E.G InfluxDB). Leaving this parameter empty skips CollectD entirely. Default value: ''
+# @param collectd_network_server_hostname Optional[String] Hostname of CollectD network server (E.G InfluxDB). Leaving this parameter empty skips CollectD entirely. Default value: ''
 # @param collectd_network_server_port Optional[Integer[0, 65535]] Port used by CollectD network server. Valid options: unsigned shortint digit. Default value: undef
-# @param sensu_rabbitmq_hostname [String] RabbitMQ hostname used by Sensu server. Leaving this parameter empty skips Sensu entirely. Default value: ''
-# @param sensu_rabbitmq_password [String] RabbitMQ hostname used by Sensu server. Default value: 'guest'
+# @param sensu_rabbitmq_hostname Optional[String] RabbitMQ hostname used by Sensu server. Leaving this parameter empty skips Sensu entirely. Default value: ''
+# @param sensu_rabbitmq_password Optional[String] RabbitMQ hostname used by Sensu server. Default value: 'guest'
 #
 class monitoring (
-  String $collectd_network_server_hostname,
+  Optional[String] $collectd_network_server_hostname,
   Optional[Integer[0, 65535]] $collectd_network_server_port,
-  String $sensu_rabbitmq_hostname,
-  String $sensu_rabbitmq_password,) {
+  Optional[String] $sensu_rabbitmq_hostname,
+  Optional[String] $sensu_rabbitmq_password,) {
 
   # Ensure facts refresh monitoring tools are applied last
   # Would rather use custom stages instead, but stages doesn't support subclasses

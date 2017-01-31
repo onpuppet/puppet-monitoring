@@ -10,8 +10,6 @@ describe 'monitoring' do
 
         context 'monitoring class without any parameters' do
           it { is_expected.to compile.with_all_deps }
-
-          it { is_expected.to contain_class('monitoring::params') }
         end
       end
     end

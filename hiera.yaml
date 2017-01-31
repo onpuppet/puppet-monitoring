@@ -1,6 +1,6 @@
 ---
 version: 4
-datadir: data
+datadir: params
 hierarchy:
   - name: "Full Version"
     backend: yaml
@@ -19,4 +19,4 @@ hierarchy:
     path: "%{facts.os.family}"
 
   - name: "common"
-backend: yaml
+    backend: yaml
