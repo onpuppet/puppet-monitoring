@@ -48,11 +48,5 @@ class monitoring (
     notify +> Refacter['monitoring']
   }
 
-  if !empty($::monitoring::collectd_network_server_hostname) {
-    include ::monitoring::metrics::collectd
-  }
-
-  if (!empty($::monitoring::sensu_rabbitmq_hostname)) {
-    include ::monitoring::monitoring::sensu
-  }
+  include ::monitoring::install
 }
