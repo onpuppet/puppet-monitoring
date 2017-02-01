@@ -47,7 +47,7 @@ class monitoring::monitoring::sensu::elasticsearch (
     command => "${plugins_location}check-es-file-descriptors.rb",
   }
   sensu::check { 'es-heap':
-    command => "${plugins_location}check-es-heap.rb --percentage --warn 70 --crit 80",
+    command => "${plugins_location}check-es-heap.rb --percentage --warn 80 --crit 90",
   }
   sensu::check { 'es-indexes':
     command => "${plugins_location}check-es-indexes.rb --cluster elasticsearch",
