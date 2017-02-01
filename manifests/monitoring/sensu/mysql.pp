@@ -5,13 +5,13 @@
 # @see https://yuav.github.io/puppet-monitoring Monitoring
 #
 # @param plugins_location [String] Location of sensu plugins. Default value: /opt/sensu/embedded/bin/
-# @param username [String] Username for Sensu checks of mysql internals. Default value: undef
-# @param password [String] Password for Sensu checks of mysql internals. Default value: undef
+# @param username Optional[String] Username for Sensu checks of mysql internals. Default value: undef
+# @param password Optional[String] Password for Sensu checks of mysql internals. Default value: undef
 #
 class monitoring::monitoring::sensu::mysql (
   String $plugins_location,
-  String $username,
-  String $password,
+  Optional[String] $username,
+  Optional[String] $password,
   ) {
 
   # TODO; dynamically create mysql credentials if mysql is present

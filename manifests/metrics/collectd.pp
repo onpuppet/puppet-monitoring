@@ -11,7 +11,7 @@
 #
 class monitoring::metrics::collectd (
   String $network_server_hostname,
-  Integer[0, 65535] $network_server_port,) {
+  String $network_server_port,) {
   class { '::collectd':
     purge           => true,
     recurse         => true,

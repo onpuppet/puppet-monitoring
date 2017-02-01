@@ -11,12 +11,13 @@
 #
 # @param collectd_network_server_hostname Optional[String] Hostname of CollectD network server (E.G InfluxDB). Leaving this parameter empty skips CollectD entirely. Default value: ''
 # @param collectd_network_server_port Optional[Integer[0, 65535]] Port used by CollectD network server. Valid options: unsigned shortint digit. Default value: undef
+# @param plugins_location [String] Location of sensu plugins. Default value: /opt/sensu/embedded/bin/
 # @param sensu_rabbitmq_hostname Optional[String] RabbitMQ hostname used by Sensu server. Leaving this parameter empty skips Sensu entirely. Default value: ''
 # @param sensu_rabbitmq_password Optional[String] RabbitMQ hostname used by Sensu server. Default value: 'guest'
 #
 class monitoring (
   Optional[String] $collectd_network_server_hostname,
-  Optional[Integer[0, 65535]] $collectd_network_server_port,
+  Optional[String] $collectd_network_server_port,
   Optional[String] $sensu_plugins_location,
   Optional[String] $sensu_rabbitmq_hostname,
   Optional[String] $sensu_rabbitmq_password,) {

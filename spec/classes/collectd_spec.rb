@@ -1,22 +1,21 @@
 require 'spec_helper'
 
 describe 'monitoring' do
+  let :pre_condition do
+    #'include ::monitoring'
+  end
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
-        let(:facts) do
-          facts
-        end
-
-        let(:params) do
-          {
-            collectd_network_server_hostname: 'influxdb'
-          }
-        end
-
         context 'rabbitmq present' do
           let(:facts) do
             facts.merge(rabbitmq_present: true, rabbitmq_management_present: true, rabbitmq_management_port: '15672')
+          end
+
+          let(:params) do
+            {
+              collectd_network_server_hostname: 'influxdb'
+            }
           end
 
           it { is_expected.to contain_class('monitoring::metrics::collectd') }

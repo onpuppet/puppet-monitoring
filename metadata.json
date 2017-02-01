@@ -1,12 +1,12 @@
 {
-  "name": "yuav-monitoring",
+  "name": "onpuppet-monitoring",
   "version": "1.0.6",
   "author": "Jon Skarpeteig",
   "summary": "Autodetect and install monitoring and metrics for supported services",
   "license": "Apache-2.0",
-  "source": "git@github.com:Yuav/puppet-monitoring.git",
-  "project_page": "https://github.com/Yuav/puppet-monitoring",
-  "issues_url": "https://github.com/Yuav/puppet-monitoring",
+  "source": "git@github.com:onpuppet/puppet-monitoring.git",
+  "project_page": "https://github.com/onpuppet/puppet-monitoring",
+  "issues_url": "https://github.com/onpuppet/puppet-monitoring",
   "data_provider": "hiera",
   "tags": [
     "fact",
@@ -78,7 +78,7 @@
     	"version_requirement": ">= 2.1.0 < 5.0.0"
     },
     {
-    	"name": "yuav-refacter",
+    	"name": "onpuppet-refacter",
     	"version_requirement": ">= 1.0.0 < 9.9.9"
     }
   ],

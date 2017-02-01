@@ -1,8 +1,8 @@
 # Class: monitoring::install
 #
-# @see https://yuav.github.io/puppet-monitoring Monitoring
-# @see https://www.github.com/Yuav/puppet-monitoring Github
-# @see https://forge.puppet.com/Yuav/puppet-monitoring Puppet Forge
+# @see https://onpuppet.github.io/puppet-monitoring Monitoring
+# @see https://www.github.com/onpuppet/puppet-monitoring Github
+# @see https://forge.puppet.com/onpuppet/puppet-monitoring Puppet Forge
 #
 # @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
 #
