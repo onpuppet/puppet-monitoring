@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe 'monitoring' do
-  let :pre_condition do
-    #'include ::monitoring'
-  end
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
