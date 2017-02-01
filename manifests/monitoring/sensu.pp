@@ -4,7 +4,7 @@
 #
 # @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
 #
-# @see https://yuav.github.io/puppet-monitoring Monitoring
+# @see https://onpuppet.github.io/puppet-monitoring Monitoring
 #
 # @param rabbitmq_hostname [String] RabbitMQ hostname used by Sensu server. Default value: ''
 # @param rabbitmq_password [String] RabbitMQ hostname used by Sensu server. Default value: 'guest'

@@ -1,7 +1,7 @@
 Puppet Monitoring
 =================
 
-[![Build Status](https://travis-ci.org/Yuav/puppet-monitoring.svg)](https://travis-ci.org/Yuav/puppet-monitoring)
+[![Build Status](https://travis-ci.org/onpuppet/puppet-monitoring.svg)](https://travis-ci.org/onpuppet/puppet-monitoring)
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
@@ -20,7 +20,7 @@ Module to install monitoring for any detected service supported
 Detects installed services by using custom facts. This enables complete decoupling of monitoring from deployment of services.
 The module provides a highly opinionated monitoring client setup, and assumes the existence of server side components being available.
 
-With the help of [yuav-refacter](https://github.com/Yuav/puppet-refacter), the services installed during the same run will cause facts refresh prior to installing monitoring tools
+With the help of [onpuppet-refacter](https://github.com/onpuppet/puppet-refacter), the services installed during the same run will cause facts refresh prior to installing monitoring tools
 
 Decoupling monitoring module from other modules is useful in order to avoid adding monitoring code
 into the modules themselves. The module will magically install monitoring of everything installed on a machine without any
@@ -30,7 +30,7 @@ hard dependencies between the module that install the service and the monitoring
 
 Install the module using:
 ```puppet
-puppet module install yuav-monitoring
+puppet module install onpuppet-monitoring
 ```
 
 ## Usage
@@ -114,7 +114,7 @@ If present:
 ### Custom Facts
 
 This module relies on a set of custom facts to detect any services installed. These facts are refreshed at the end
-of any ordinary Puppet run using the yuav-refacter module. This ensures that if another module installs any of these
+of any ordinary Puppet run using the onpuppet-refacter module. This ensures that if another module installs any of these
 services, the fact values will be updated to reflect this new state before installing monitoring plugins
 
 #### Apache facts
@@ -192,7 +192,7 @@ $::redis_present
 ## Limitations
 
 If you are running through a Puppet master, and are deploying services using Puppet - monitoring will not detect this service until the next run
-due to a limitation in Yuav-refacter module. Running in a masterless setup however, will work as expected.
+due to a limitation in onpuppet-refacter module. Running in a masterless setup however, will work as expected.
 
 ## Contributing
 

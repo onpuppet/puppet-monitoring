@@ -1,3 +1,9 @@
+## 2017-02-01 Release 2.0.0
+
+* Migrated to hiera data pattern
+* Release under onpuppet namespace
+* Added puppet-string values
+
 ## 2017-01-30 Release 1.0.6
 
 * Added option to turn off void homedir monitoring in Centrify sensu plugin
@@ -29,7 +35,7 @@
 
 ## 2016-12-07 Release 0.3.6
 
-* Fixed fact evaluation issue for RabbitMQ 
+* Fixed fact evaluation issue for RabbitMQ
 * Metadata lint fix
 
 ## 2016-12-07 Release 0.3.5

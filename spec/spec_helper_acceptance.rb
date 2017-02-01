@@ -27,7 +27,7 @@ RSpec.configure do |c|
       on host, puppet('module', 'install', 'puppetlabs-apt'), acceptable_exit_codes: [0]
       on host, puppet('module', 'install', 'puppet-yum'), acceptable_exit_codes: [0]
       on host, puppet('module', 'install', 'sensu-sensu'), acceptable_exit_codes: [0]
-      on host, puppet('module', 'install', 'yuav-refacter'), acceptable_exit_codes: [0]
+      on host, puppet('module', 'install', 'onpuppet-refacter'), acceptable_exit_codes: [0]
       # on host, puppet('module', 'install', 'puppet-collectd'), acceptable_exit_codes: [0]
       install_package host, 'git'
       modulepath = host.puppet['modulepath']

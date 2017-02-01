@@ -4,7 +4,7 @@
 #
 # @author Jon Skarpeteig <jon.skarpeteig@gmail.com>
 #
-# @see https://yuav.github.io/puppet-monitoring Monitoring
+# @see https://onpuppet.github.io/puppet-monitoring Monitoring
 #
 # @param network_server_hostname [String] Hostname of CollectD network server (E.G InfluxDB). Leaving this parameter empty skips CollectD entirely. Default value: ''
 # @param network_server_port Optional[Integer[0, 65535]] Port used by CollectD network server. Valid options: unsigned shortint digit. Default value: undef
