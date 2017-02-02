@@ -12,6 +12,7 @@
 class monitoring::monitoring::sensu (
   String $rabbitmq_hostname,
   String $rabbitmq_password,
+  String $rabbitmq_vhost = 'sensu',
 ) {
 
   # Don't override sensu install on sensu server node
@@ -21,6 +22,7 @@ class monitoring::monitoring::sensu (
       api               => false,
       rabbitmq_host     => $rabbitmq_hostname,
       rabbitmq_password => $rabbitmq_password,
+      rabbitmq_vhost    => $rabbitmq_vhost,
       purge             => false,
       use_embedded_ruby => true,
       safe_mode         => true,
