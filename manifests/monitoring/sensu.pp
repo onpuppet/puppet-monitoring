@@ -8,6 +8,7 @@
 #
 # @param rabbitmq_hostname [String] RabbitMQ hostname used by Sensu server. Default value: ''
 # @param rabbitmq_password [String] RabbitMQ hostname used by Sensu server. Default value: 'guest'
+# @param rabbitmq_vhost [String] RabbitMQ vhost used by Sensu server. Default value: 'sensu'
 #
 class monitoring::monitoring::sensu (
   String $rabbitmq_hostname,
