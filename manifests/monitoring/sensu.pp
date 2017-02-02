@@ -13,7 +13,7 @@
 class monitoring::monitoring::sensu (
   String $rabbitmq_hostname,
   String $rabbitmq_password,
-  String $rabbitmq_vhost = 'sensu',
+  String $rabbitmq_vhost,
 ) {
 
   # Don't override sensu install on sensu server node
