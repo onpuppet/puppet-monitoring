@@ -9,6 +9,7 @@ monitoring::metrics::collectd::network_server_hostname: "%{'monitoring::collectd
 monitoring::metrics::collectd::network_server_port: "%{'monitoring::collectd_network_server_port'}"
 monitoring::monitoring::sensu::rabbitmq_hostname: "%{'monitoring::sensu_rabbitmq_hostname'}"
 monitoring::monitoring::sensu::rabbitmq_password: "%{'monitoring::sensu_rabbitmq_password'}"
+monitoring::monitoring::sensu::rabbitmq_vhost: "%{'monitoring::sensu_rabbitmq_vhost'}"
 monitoring::monitoring::sensu::base::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::base::disk_usage_magic_factor: '0.9'
 monitoring::monitoring::sensu::centrify::plugins_location: "%{'monitoring::sensu_plugins_location'}"
