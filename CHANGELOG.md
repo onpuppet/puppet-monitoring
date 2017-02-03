@@ -1,3 +1,7 @@
+## 2017-02-03 Release 2.1.0
+
+* Added heka, puppet and ssh support in Sensu
+
 ## 2017-02-01 Release 2.0.0
 
 * Migrated to hiera data pattern

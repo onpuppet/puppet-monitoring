@@ -8,8 +8,10 @@ Puppet Monitoring
 3. [Setup - The basics of getting started with monitoring](#setup)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+  a) [CollectD Plugins](#collectd-plugins)
+  b) [Sensu Plugins](#sensu-plugins)
+6. [Limitations - OS compatibility, etc.](#limitations)
+7. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
@@ -105,11 +107,14 @@ If present:
   * centrify
   * collectd
   * elasticsearch
+  * hekad
   * influxdb
   * mysql
   * postfix
+  * puppet
   * rabbitmq
   * redis
+  * sshd
 
 ### Custom Facts
 
@@ -147,6 +152,12 @@ Checks if ElasticSearch is installed on the system
 $::elasticsearch_present
 ```
 
+#### Heka facts
+Checks if Heka is installed on the system
+```puppet
+$::hekad_present
+```
+
 #### InfluxDB facts
 Checks if InfluxDB is installed on the system
 ```puppet
@@ -172,6 +183,15 @@ Checks if Postfix is installed on the system
 $::postfix_present
 ```
 
+#### Puppet facts
+Checks if Puppet is installed on the system
+```puppet
+$::puppet_present
+```
+Returns true if Puppet is running, false otherwise
+```puppet
+$::puppet_running
+```
 #### RabbitMQ facts
 
 Checks if RabbitMQ is installed on the system
@@ -189,6 +209,15 @@ Checks if Redis is installed on the system
 $::redis_present
 ```
 
+#### SSHd facts
+Checks if SSHd is installed on the system
+```puppet
+$::sshd_present
+```
+Returns true if SSHd is running, false otherwise
+```puppet
+$::sshd_running
+```
 ## Limitations
 
 If you are running through a Puppet master, and are deploying services using Puppet - monitoring will not detect this service until the next run
