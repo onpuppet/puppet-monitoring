@@ -5,13 +5,17 @@ centrify_present: false
 collectd_present: false
 collectd_version: '5.5.0'
 elasticsearch_present: false
+hekad_present: false
 influxdb_present: false
 mysql_present: false
 ntpd_present: false
 postfix_present: false
+puppet_present: false
+puppet_running: false
 python_dir: '/usr/local/lib/python2.7/dist-packages'
 rabbitmq_management_port: '15672'
 rabbitmq_management_present: false
 rabbitmq_present: false
 redis_present: false
-
+sshd_present: false
+sshd_running: false

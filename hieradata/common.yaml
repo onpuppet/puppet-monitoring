@@ -17,10 +17,13 @@ monitoring::monitoring::sensu::centrify::homedir_path: '/home'
 monitoring::monitoring::sensu::centrify::monitor_void_homedirs: true
 monitoring::monitoring::sensu::collectd::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::elasticsearch::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::hekad::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::influxdb::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::mysql::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::mysql::username: ~
 monitoring::monitoring::sensu::mysql::password: ~
 monitoring::monitoring::sensu::postfix::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::puppet::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::rabbitmq::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::redis::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::sshd::plugins_location: "%{'monitoring::sensu_plugins_location'}"

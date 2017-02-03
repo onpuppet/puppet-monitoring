@@ -12,11 +12,14 @@ describe 'monitoring::monitoring::sensu', type: :class do
             centrify_present: true,
             collectd_present: true,
             elasticsearch_present: true,
+            hekad_present: true,
             influxdb_present: true,
             mysql_present: true,
             postfix_present: true,
+            puppet_present: true,
             rabbitmq_present: true,
-            redis_present: true
+            redis_present: true,
+            sshd_present: true
           )
         end
 
@@ -29,6 +32,8 @@ describe 'monitoring::monitoring::sensu', type: :class do
         it { is_expected.to contain_class('monitoring::monitoring::sensu::elasticsearch') }
         it { is_expected.to contain_sensu__check('es-cluster-status') }
 
+        it { is_expected.to contain_class('monitoring::monitoring::sensu::hekad') }
+
         it { is_expected.to contain_class('monitoring::monitoring::sensu::influxdb') }
         it { is_expected.to contain_sensu__check('influxdb') }
 
@@ -38,11 +43,15 @@ describe 'monitoring::monitoring::sensu', type: :class do
         it { is_expected.to contain_class('monitoring::monitoring::sensu::postfix') }
         it { is_expected.to contain_sensu__check('mailq') }
 
+        it { is_expected.to contain_class('monitoring::monitoring::sensu::puppet') }
+
         it { is_expected.to contain_class('monitoring::monitoring::sensu::rabbitmq') }
         it { is_expected.to contain_sensu__check('rabbitmq-amqp-alive') }
 
         it { is_expected.to contain_class('monitoring::monitoring::sensu::redis') }
         it { is_expected.to contain_sensu__check('redis-process') }
+
+        it { is_expected.to contain_class('monitoring::monitoring::sensu::sshd') }
 
         describe 'monitoring::monitoring::sensu::base' do
           it { is_expected.to contain_sensu__check('memory').with('command' => '/opt/sensu/embedded/bin/check-memory.rb') }
@@ -69,8 +78,10 @@ describe 'monitoring::monitoring::sensu', type: :class do
             influxdb_present: false,
             mysql_present: false,
             postfix_present: false,
+            puppet_present: false,
             rabbitmq_present: false,
-            redis_present: false
+            redis_present: false,
+            sshd_present: false
           )
         end
 

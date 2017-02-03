@@ -45,6 +45,10 @@ class monitoring::monitoring::sensu (
     include ::monitoring::monitoring::sensu::elasticsearch
   }
 
+  if ($::hekad_present) {
+    include ::monitoring::monitoring::sensu::hekad
+  }
+
   if ($::influxdb_present) {
     include ::monitoring::monitoring::sensu::influxdb
   }
@@ -57,6 +61,10 @@ class monitoring::monitoring::sensu (
     include ::monitoring::monitoring::sensu::postfix
   }
 
+  if ($::puppet_present) {
+    include ::monitoring::monitoring::sensu::puppet
+  }
+
   if ($::rabbitmq_present) {
     include ::monitoring::monitoring::sensu::rabbitmq
   }
@@ -65,4 +73,7 @@ class monitoring::monitoring::sensu (
     include ::monitoring::monitoring::sensu::redis
   }
 
+  if ($::sshd_present) {
+    include ::monitoring::monitoring::sensu::sshd
+  }
 }
