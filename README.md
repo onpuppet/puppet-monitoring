@@ -8,8 +8,8 @@ Puppet Monitoring
 3. [Setup - The basics of getting started with monitoring](#setup)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-  a) [CollectD Plugins](#collectd-plugins)
-  b) [Sensu Plugins](#sensu-plugins)
+ * [CollectD Plugins](#collectd-plugins)
+ * [Sensu Plugins](#sensu-plugins)
 6. [Limitations - OS compatibility, etc.](#limitations)
 7. [Development - Guide for contributing to the module](#development)
 
