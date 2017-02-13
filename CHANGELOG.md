@@ -1,3 +1,7 @@
+## 2017-02-13 Release 2.1.3
+
+* Embed full path for cuda fact
+
 ## 2017-02-13 Release 2.1.2
 
 * Added sensu rabbitmq vhost option
