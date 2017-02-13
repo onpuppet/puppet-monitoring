@@ -1,3 +1,7 @@
+## 2017-02-13 Release 2.1.2
+
+* Added sensu rabbitmq vhost option
+
 ## 2017-02-13 Release 2.1.1
 
 * Added Cuda metrics support
