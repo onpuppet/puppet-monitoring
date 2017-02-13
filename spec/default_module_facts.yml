@@ -4,6 +4,7 @@ apache_statuspage_present: false
 centrify_present: false
 collectd_present: false
 collectd_version: '5.5.0'
+cuda_present: false
 elasticsearch_present: false
 hekad_present: false
 influxdb_present: false

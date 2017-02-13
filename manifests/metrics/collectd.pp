@@ -32,6 +32,10 @@ class monitoring::metrics::collectd (
     include ::monitoring::metrics::collectd::apache
   }
 
+  if ($::cuda_present) {
+    include ::monitoring::metrics::collectd::cuda
+  }
+
   if ($::ntpd_present) {
     include ::monitoring::metrics::collectd::ntpd
   }

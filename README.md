@@ -65,6 +65,7 @@ Default:
 
 If present:
  * apache (if statuspage is enabled)
+ * cuda
  * ntpd
  * rabbitmq (if management interface enabled)
  * redis
@@ -146,6 +147,12 @@ Checks if CollectD is installed on the system
 $::collectd_present
 ```
 
+#### Cuda facts
+Checks if Cuda is installed on the system
+```puppet
+$::cuda_present
+```
+
 #### ElasticSearch facts
 Checks if ElasticSearch is installed on the system
 ```puppet
@@ -221,7 +228,7 @@ $::sshd_running
 ## Limitations
 
 If you are running through a Puppet master, and are deploying services using Puppet - monitoring will not detect this service until the next run
-due to a limitation in onpuppet-refacter module. Running in a masterless setup however, will work as expected.
+due to a limitation in onpuppet-refacter module. Running in a masterless setup however, will work for a single run.
 
 ## Contributing
 

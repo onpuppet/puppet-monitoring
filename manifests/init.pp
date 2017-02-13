@@ -30,6 +30,7 @@ class monitoring (
       '^apache_',
       '^centrify_',
       '^collectd_',
+      '^cuda_',
       '^elasticsearch_',
       '^influxdb_',
       '^mysql_',
