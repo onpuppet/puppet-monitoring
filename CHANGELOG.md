@@ -1,3 +1,7 @@
+## 2017-02-13 Release 2.1.1
+
+* Added Cuda metrics support
+
 ## 2017-02-03 Release 2.1.0
 
 * Added heka, puppet and ssh support in Sensu
