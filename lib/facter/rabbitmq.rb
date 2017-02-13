@@ -7,7 +7,7 @@ end
 Facter.add(:rabbitmq_management_present) do
   confine rabbitmq_present: true
   setcode do
-    Facter::Util::Resolution.exec('/usr/sbin/rabbitmqctl status | grep rabbitmq_management')
+    Facter::Util::Resolution.exec('/usr/sbin/rabbitmqctl status | /bin/grep rabbitmq_management')
     $?.exitstatus.zero?
   end
 end
