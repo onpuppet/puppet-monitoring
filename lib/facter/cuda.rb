@@ -1,6 +1,10 @@
 Facter.add(:cuda_present) do
   setcode do
-    Facter::Util::Resolution.exec('/usr/bin/nvidia-smi -L | /bin/grep GPU')
-    $?.exitstatus.zero?
+    if Facter::Util::Resolution.which('nvidia-smi')
+      Facter::Util::Resolution.exec('nvidia-smi -L | grep GPU')
+      $?.exitstatus.zero?
+    else
+      false
+    end
   end
 end
