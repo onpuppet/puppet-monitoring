@@ -1,3 +1,7 @@
+## 2017-02-14 Release 2.1.4
+
+* Fixed issue with false positive cuda detection
+
 ## 2017-02-13 Release 2.1.3
 
 * Embed full path for cuda fact
