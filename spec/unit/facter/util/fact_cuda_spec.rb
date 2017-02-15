@@ -9,6 +9,7 @@ describe Facter::Util::Fact do
     context 'with cuda-server present' do
       it do
         Facter::Util::Resolution.stubs(:exec)
+        Facter::Util::Resolution.expects(:which).with('nvidia-smi').returns(true)
         expect(Facter.value(:cuda_present)).to eq(true)
       end
     end
