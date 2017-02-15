@@ -19,7 +19,8 @@ describe 'monitoring::monitoring::sensu', type: :class do
             puppet_present: true,
             rabbitmq_present: true,
             redis_present: true,
-            sshd_present: true
+            sshd_present: true,
+            ntpd_present: true
           )
         end
 
@@ -53,6 +54,9 @@ describe 'monitoring::monitoring::sensu', type: :class do
 
         it { is_expected.to contain_class('monitoring::monitoring::sensu::sshd') }
 
+        it { is_expected.to contain_class('monitoring::monitoring::sensu::ntpd') }
+        it { is_expected.to contain_sensu__check('ntpd-process') }
+
         describe 'monitoring::monitoring::sensu::base' do
           it { is_expected.to contain_sensu__check('memory').with('command' => '/opt/sensu/embedded/bin/check-memory.rb') }
 
@@ -81,7 +85,8 @@ describe 'monitoring::monitoring::sensu', type: :class do
             puppet_present: false,
             rabbitmq_present: false,
             redis_present: false,
-            sshd_present: false
+            sshd_present: false,
+            ntpd_present: false
           )
         end
 
@@ -92,6 +97,7 @@ describe 'monitoring::monitoring::sensu', type: :class do
         it { is_expected.not_to contain_class('monitoring::monitoring::sensu::postfix') }
         it { is_expected.not_to contain_class('monitoring::monitoring::sensu::rabbitmq') }
         it { is_expected.not_to contain_class('monitoring::monitoring::sensu::redis') }
+        it { is_expected.not_to contain_class('monitoring::monitoring::sensu::ntpd') }
         it { is_expected.not_to contain_sensu__check('rabbitmq-alive') }
       end
     end

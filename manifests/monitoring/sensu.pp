@@ -76,4 +76,8 @@ class monitoring::monitoring::sensu (
   if ($::sshd_present) {
     include ::monitoring::monitoring::sensu::sshd
   }
+
+  if ($::ntpd_present) {
+    include ::monitoring::monitoring::sensu::ntpd
+  }
 }
