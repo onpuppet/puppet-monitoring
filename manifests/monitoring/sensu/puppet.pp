@@ -9,6 +9,6 @@
 class monitoring::monitoring::sensu::puppet (String $plugins_location,) {
 
   if ($::puppet_running) {
-    sensu::check { 'puppet-process': command => "${plugins_location}check-process.rb --pattern puppet --warn-under 1", }
+    sensu::check { 'puppet-process': command => "${plugins_location}check-process.rb --pattern 'puppet agent' --warn-under 1", }
   }
 }
