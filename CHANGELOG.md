@@ -1,3 +1,8 @@
+## 2017-02-15 Release 2.1.5
+
+* Added Sensu NTP checks
+* Fix too broad puppet service regex
+
 ## 2017-02-14 Release 2.1.4
 
 * Fixed issue with false positive cuda detection
