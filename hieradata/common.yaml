@@ -27,3 +27,4 @@ monitoring::monitoring::sensu::puppet::plugins_location: "%{'monitoring::sensu_p
 monitoring::monitoring::sensu::rabbitmq::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::redis::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::sshd::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::ntpd::plugins_location: "%{'monitoring::sensu_plugins_location'}"
