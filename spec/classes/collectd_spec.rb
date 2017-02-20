@@ -10,6 +10,7 @@ describe 'monitoring' do
               apache_present: true,
               apache_statuspage_present: true,
               cuda_present: true,
+              iscdhcp_present: true,
               rabbitmq_management_present: true,
               rabbitmq_management_port: '15672',
               rabbitmq_present: true,
@@ -28,6 +29,7 @@ describe 'monitoring' do
           it { is_expected.to contain_class('monitoring::metrics::collectd::rabbitmq') }
           it { is_expected.to contain_class('collectd::plugin::apache') }
           it { is_expected.to contain_class('collectd::plugin::cuda') }
+          it { is_expected.to contain_class('collectd::plugin::iscdhcp') }
           it { is_expected.to contain_class('collectd::plugin::redis') }
           it { is_expected.to contain_class('collectd::plugin::rabbitmq') }
           it 'Load collectd_rabbitmq in python-config' do

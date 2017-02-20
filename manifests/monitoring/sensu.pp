@@ -53,6 +53,10 @@ class monitoring::monitoring::sensu (
     include ::monitoring::monitoring::sensu::influxdb
   }
 
+  if ($::iscdhcp_present) {
+    include ::monitoring::monitoring::sensu::iscdhcp
+  }
+
   if ($::mysql_present) {
     include ::monitoring::monitoring::sensu::mysql
   }

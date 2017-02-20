@@ -66,6 +66,7 @@ Default:
 If present:
  * apache (if statuspage is enabled)
  * cuda
+ * isc-dhcp-server
  * ntpd
  * rabbitmq (if management interface enabled)
  * redis
@@ -110,6 +111,7 @@ If present:
   * elasticsearch
   * hekad
   * influxdb
+  * isc-dhcp-server
   * mysql
   * postfix
   * puppet
@@ -169,6 +171,17 @@ $::hekad_present
 Checks if InfluxDB is installed on the system
 ```puppet
 $::influxdb_present
+```
+
+#### ISC DHCP Server facts
+Checks if ISC DHCP Server is installed on the system
+```puppet
+$::iscdhcp_present
+```
+
+Checks if ISC DHCP Server is running
+```puppet
+$::iscdhcp_running
 ```
 
 #### Mysql facts

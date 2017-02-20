@@ -36,6 +36,10 @@ class monitoring::metrics::collectd (
     include ::monitoring::metrics::collectd::cuda
   }
 
+  if ($::iscdhcp_present) {
+    include ::monitoring::metrics::collectd::iscdhcp
+  }
+
   if ($::ntpd_present) {
     include ::monitoring::metrics::collectd::ntpd
   }

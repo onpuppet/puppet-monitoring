@@ -19,6 +19,7 @@ monitoring::monitoring::sensu::collectd::plugins_location: "%{'monitoring::sensu
 monitoring::monitoring::sensu::elasticsearch::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::hekad::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::influxdb::plugins_location: "%{'monitoring::sensu_plugins_location'}"
+monitoring::monitoring::sensu::iscdhcp::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::mysql::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::mysql::username: ~
 monitoring::monitoring::sensu::mysql::password: ~

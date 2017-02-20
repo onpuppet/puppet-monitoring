@@ -8,6 +8,8 @@ cuda_present: false
 elasticsearch_present: false
 hekad_present: false
 influxdb_present: false
+iscdhcp_present: false
+iscdhcp_running: false
 mysql_present: false
 ntpd_present: false
 postfix_present: false

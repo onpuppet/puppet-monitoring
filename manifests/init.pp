@@ -35,6 +35,7 @@ class monitoring (
       '^cuda_',
       '^elasticsearch_',
       '^influxdb_',
+      '^iscdhcp_',
       '^mysql_',
       '^ntpd_',
       '^postfix_',
