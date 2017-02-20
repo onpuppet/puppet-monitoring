@@ -1,3 +1,7 @@
+## 2017-02-20 Release 2.2.0
+
+* Added ISC DHCP Server support
+
 ## 2017-02-15 Release 2.1.5
 
 * Added Sensu NTP checks
