@@ -7,7 +7,7 @@ end
 Facter.add(:hekad_running) do
   confine hekad_present: true
   setcode do
-    service_name = 'hekad'
+    service_name = 'heka'
     Puppet::Type.type(:service).newservice(name: service_name).provider.status == :running
   end
 end
