@@ -9,7 +9,7 @@ describe Facter::Util::Fact do
     context 'with elasticsearch present' do
       it do
         Facter::Util::Resolution.stubs(:exec)
-        Facter::Util::Resolution.expects(:which).with('curator').returns(true)
+        Facter::Util::Resolution.expects(:which).with('/usr/share/elasticsearch/bin/elasticsearch').returns(true)
         expect(Facter.value(:elasticsearch_present)).to eq(true)
       end
     end
@@ -17,7 +17,7 @@ describe Facter::Util::Fact do
     context 'with elasticsearch absent' do
       it do
         Facter::Util::Resolution.stubs(:exec)
-        Facter::Util::Resolution.expects(:which).with('curator').returns(false)
+        Facter::Util::Resolution.expects(:which).with('/usr/share/elasticsearch/bin/elasticsearch').returns(false)
         expect(Facter.value(:elasticsearch_present)).to eq(false)
       end
     end
