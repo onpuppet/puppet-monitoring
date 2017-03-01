@@ -5,7 +5,7 @@ Facter.add(:sshd_present) do
 end
 
 Facter.add(:sshd_running) do
-  confine puppet_present: true
+  confine sshd_present: true
   setcode do
     os = Facter.value(:osfamily)
     service_name = os =~ %r{RedHat|CentOS|Fedora} ? 'sshd' : 'ssh'
