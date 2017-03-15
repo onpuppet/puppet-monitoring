@@ -1,3 +1,9 @@
+## 2017-03-15 Release 2.2.1
+
+* Fixed wrong heka service name in hekad_running fact
+* Update elasticsearch_present fact resolution
+* Fixed sshd_running fact
+
 ## 2017-02-20 Release 2.2.0
 
 * Added ISC DHCP Server support
