@@ -58,4 +58,7 @@ class monitoring::monitoring::sensu::elasticsearch (
   sensu::check { 'es-node-status':
     command => "${plugins_location}check-es-node-status.rb",
   }
+  sensu::check { 'es-shard-allocation-status':
+    command => "${plugins_location}check-es-shard-allocation-status.rb",
+  }
 }
