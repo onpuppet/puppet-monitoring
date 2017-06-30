@@ -41,7 +41,7 @@ class monitoring::monitoring::sensu::base (
   sensu::check { 'root-fs-writable': command => "${plugins_location}check-fs-writable.rb --directory /etc/sensu/", }
 
   sensu::check { 'process-zombie-state':
-    command => "${plugins_location}check-process.rb --state Z --warn-over 20 --critical-over 40 --warn-under 0 --critical-under 0",
+    command => "${plugins_location}check-process.rb --state Z --warn-over 20 --critical-over 999 --warn-under 0 --critical-under 0",
   }
 
 }
