@@ -36,7 +36,7 @@ class monitoring::monitoring::sensu::base (
     command => "${plugins_location}check-disk-usage.rb -x ${ignore_fs_types} -p ${ignore_mnt} -m ${disk_usage_magic_factor}",
   }
 
-  sensu::check { 'load': command => "${plugins_location}check-load.rb", }
+  sensu::check { 'load': command => "${plugins_location}check-load.rb --crit 8.0,7.0,6.0", }
 
   sensu::check { 'root-fs-writable': command => "${plugins_location}check-fs-writable.rb --directory /etc/sensu/", }
 
