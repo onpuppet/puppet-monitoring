@@ -27,7 +27,7 @@ class monitoring::monitoring::sensu::base (
 
   sensu::check { 'memory-percent': command => "${plugins_location}check-memory-percent.rb -w 88 -c 98", }
 
-  sensu::check { 'swap-percent': command => "${plugins_location}check-swap-percent.rb", }
+  sensu::check { 'swap-percent': command => "${plugins_location}check-swap-percent.rb --critical 90", }
 
   $ignore_fs_types = 'nfs,nfs4,cifs,devtmpfs,tmpfs,aufs,proc'
   $ignore_mnt = '"^/run/|^/sys/|^/var/lib/docker/|^/snap/"'
