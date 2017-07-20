@@ -23,8 +23,6 @@ class monitoring::monitoring::sensu::base (
     provider => sensu_gem,
   }
 
-  sensu::check { 'memory': command => "${plugins_location}check-memory.rb", }
-
   sensu::check { 'memory-percent': command => "${plugins_location}check-memory-percent.rb -w 88 -c 98", }
 
   sensu::check { 'swap-percent': command => "${plugins_location}check-swap-percent.rb --critical 90", }
