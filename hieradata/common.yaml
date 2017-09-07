@@ -11,7 +11,7 @@ monitoring::monitoring::sensu::rabbitmq_hostname: "%{'monitoring::sensu_rabbitmq
 monitoring::monitoring::sensu::rabbitmq_password: "%{'monitoring::sensu_rabbitmq_password'}"
 monitoring::monitoring::sensu::rabbitmq_vhost: "%{'monitoring::sensu_rabbitmq_vhost'}"
 monitoring::monitoring::sensu::base::plugins_location: "%{'monitoring::sensu_plugins_location'}"
-monitoring::monitoring::sensu::base::disk_usage_magic_factor: '0.9'
+monitoring::monitoring::sensu::base::disk_usage_magic_factor: '1.0'
 monitoring::monitoring::sensu::centrify::plugins_location: "%{'monitoring::sensu_plugins_location'}"
 monitoring::monitoring::sensu::centrify::homedir_path: '/home'
 monitoring::monitoring::sensu::centrify::monitor_void_homedirs: true
