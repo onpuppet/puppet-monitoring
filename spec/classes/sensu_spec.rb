@@ -58,8 +58,6 @@ describe 'monitoring::monitoring::sensu', type: :class do
         it { is_expected.to contain_sensu__check('ntpd-process') }
 
         describe 'monitoring::monitoring::sensu::base' do
-          it { is_expected.to contain_sensu__check('memory').with('command' => '/opt/sensu/embedded/bin/check-memory-percent.rb -w 88 -c 98') }
-
           it { is_expected.to contain_sensu__check('disk-usage').with('command' => %r{-m 1.0$}) }
         end
 
