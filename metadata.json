@@ -1,6 +1,6 @@
 {
   "name": "onpuppet-monitoring",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "author": "Jon Skarpeteig",
   "summary": "Autodetect and install monitoring and metrics for supported services",
   "license": "Apache-2.0",
